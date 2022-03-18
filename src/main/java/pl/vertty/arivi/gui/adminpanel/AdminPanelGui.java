@@ -67,6 +67,22 @@ public class AdminPanelGui
                 }
             }
         });
+        category.addElement(3, ItemData.fromItem(MainConstants.GUILDS_ADMINPANEL), new ItemClick() {
+            @Override
+            public void onClick(final Player player, final Item item) {
+                if(c.getBoolean("enable.guilds.status") == true){
+                    c.set("enable.guilds.status", false);
+                    c.save();
+                    MainConstants.set();
+                    open(player);
+                }else{
+                    c.set("enable.guilds.status", true);
+                    c.save();
+                    MainConstants.set();
+                    open(player);
+                }
+            }
+        });
 
         menu.setMainCategory(category);
         menu.addCategory("AdminPanelGUI", category);

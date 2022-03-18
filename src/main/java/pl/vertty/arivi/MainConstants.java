@@ -2,6 +2,7 @@ package pl.vertty.arivi;
 
 import cn.nukkit.block.BlockID;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.DyeColor;
 import pl.vertty.arivi.utils.ChatUtil;
@@ -52,6 +53,7 @@ public class MainConstants {
     public static Item PANDORA_ITEM_ADMINPANEL;
     public static Item KITS_ADMINPANEL;
     public static Item ENCHANT_ADMINPANEL;
+    public static Item GUILDS_ADMINPANEL;
 
     //ENCHANT GUI
     public static Item UNBREAKING_1;
@@ -174,6 +176,10 @@ public class MainConstants {
         ENCHANT_ADMINPANEL = new Item(BlockID.ENCHANTING_TABLE, 0, 1);
         ENCHANT_ADMINPANEL.setCustomName(ChatUtil.fixColor("&r&5Enchant"));
         ENCHANT_ADMINPANEL.setLore(ChatUtil.fixColor("&r&8» &7Aktualny status: " + (config.getBoolean("enable.enchant.status") ? "&a✔" : "&c✖")));
+
+        GUILDS_ADMINPANEL = new Item(ItemID.END_CRYSTAL, 0, 1);
+        GUILDS_ADMINPANEL.setCustomName(ChatUtil.fixColor("&r&5Gildie"));
+        GUILDS_ADMINPANEL.setLore(ChatUtil.fixColor("&r&8» &7Aktualny status: " + (config.getBoolean("enable.guilds.status") ? "&a✔" : "&c✖")));
 
 
         //ENCHANT GUI

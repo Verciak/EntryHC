@@ -1,13 +1,11 @@
 package pl.vertty.arivi.commands.admin;
 
-import pl.vertty.arivi.Main;
-import cn.nukkit.entity.Entity;
-import cn.nukkit.utils.TextFormat;
 import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
-import pl.vertty.arivi.enums.GroupType;
-import cn.nukkit.utils.Config;
+import cn.nukkit.entity.Entity;
+import cn.nukkit.utils.TextFormat;
 import pl.vertty.arivi.commands.builder.Command;
+import pl.vertty.arivi.enums.GroupType;
 
 public class EntityClearCommand extends Command
 {

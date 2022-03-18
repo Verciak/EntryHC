@@ -3,8 +3,10 @@ package pl.vertty.arivi;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.Entity;
+import cn.nukkit.utils.LogLevel;
 import lombok.SneakyThrows;
 import pl.vertty.arivi.entity.*;
+import pl.vertty.arivi.mysql.modes.StoreMySQL;
 import pl.vertty.arivi.objects.Combat;
 import pl.vertty.arivi.managers.RoleManager;
 import pl.vertty.arivi.managers.*;
@@ -14,11 +16,16 @@ import cn.nukkit.Player;
 import pl.vertty.arivi.objects.guild.Guild;
 import cn.nukkit.inventory.Inventory;
 import pl.vertty.arivi.utils.SeralizerUtil;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.*;
 import cn.nukkit.level.Level;
 import pl.vertty.arivi.task.SprawdzMessageTimer;
 import cn.nukkit.Server;
 import java.sql.SQLException;
+import java.util.concurrent.ScheduledExecutorService;
+
 import pl.vertty.arivi.wings.WingsManager;
 import pl.vertty.arivi.tnt.EntityManager;
 import pl.vertty.arivi.loader.MotdLoader;
@@ -38,14 +45,17 @@ import pl.vertty.arivi.inventory.trade.TradeMenuHandler;
 import pl.vertty.arivi.inventory.InventoryMenuHandler;
 import cn.nukkit.plugin.PluginBase;
 
+import javax.security.auth.login.LoginException;
+
 public class Main extends PluginBase
 {
     public static Main plugin;
     public static long startUpTime;
-    
+
+
+
     @SneakyThrows
     public void onEnable() {
-
         Main.startUpTime = System.currentTimeMillis();
         Main.plugin = this;
         final InventoryMenuHandler handler = new InventoryMenuHandler();
@@ -153,6 +163,15 @@ public class Main extends PluginBase
         Entity.registerEntity(Arrow.class.getSimpleName(), Arrow.class);
         long endTime = System.nanoTime();
         getLogger().info("Registered entities in {S}ms".replace("{S}", String.valueOf((endTime - startTime) / 1000000L)));
+    }
+
+    public void mysqlSetup() throws SQLException, ClassNotFoundException {
+        Main.getStore().update("CREATE TABLE IF NOT EXISTS `q1zz_receivedrewards` (`UniqueID` VARCHAR(96) PRIMARY KEY, `DiscordAccountID` VARCHAR(96));");
+        getLogger().log(LogLevel.INFO, "Successful connected to MySQl datebase!");
+    }
+
+    public void log(String message) {
+        getLogger().log(LogLevel.INFO, message);
     }
 
 }

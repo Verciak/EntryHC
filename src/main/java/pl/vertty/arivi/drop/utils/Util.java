@@ -1,8 +1,13 @@
 package pl.vertty.arivi.drop.utils;
 
 import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.block.Block;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.item.Item;
+import cn.nukkit.level.Level;
+import cn.nukkit.level.Location;
+import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.DyeColor;
 import pl.vertty.arivi.Main;
@@ -30,6 +35,45 @@ public class Util
     public static long turbo;
     public static long turbo_exp;
 
+    public static Block getBlock(Level level, int x, int y, int z, boolean load) {
+        int fullState;
+        if (y >= 0 && y < 256) {
+            BaseFullChunk chunk;
+            int cx = x >> 4;
+            int cz = z >> 4;
+            if (load) {
+                chunk = level.getChunk(cx, cz);
+            } else {
+                chunk = level.getChunkIfLoaded(cx, cz);
+            }
+            if (chunk != null) {
+                fullState = chunk.getFullBlock(x & 0xF, y, z & 0xF);
+            } else {
+                fullState = 0;
+            }
+        } else {
+            fullState = 0;
+        }
+        Block block = Block.fullList[fullState & 0xFFF].clone();
+        block.x = x;
+        block.y = y;
+        block.z = z;
+        block.level = level;
+        return block;
+    }
+
+
+    public static Location getHighestLocation(Location l) {
+        Level level = Server.getInstance().getDefaultLevel();
+        for (int y = 255; y >= 0; y--) {
+            if (level.getBlock(l.getFloorX(), y, l.getFloorZ(), true).getId() != 0) {
+                l.setComponents(l.getX(), y, l.getZ());
+                return l;
+            }
+        }
+        l.setComponents(l.getX(), 110.0D, l.getZ());
+        return l;
+    }
 
     public static double round(double value, int places) {
         if (places < 0)

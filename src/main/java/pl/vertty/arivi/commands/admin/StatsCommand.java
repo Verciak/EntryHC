@@ -17,7 +17,6 @@ public class StatsCommand extends Command
     
     @Override
     public boolean onExecute(final CommandSender sender, final String[] args) {
-        final Player p = (Player)sender;
         if (args.length < 2) {
             return ChatUtil.sendMessage(sender, this.getUsage());
         }

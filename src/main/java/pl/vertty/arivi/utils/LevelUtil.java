@@ -5,7 +5,7 @@ import cn.nukkit.Player;
 import cn.nukkit.level.Location;
 
 public class LevelUtil {
-    private static final int DISTANCE = 60;
+    private static final int DISTANCE = 101;
 
     public static boolean isNonPvpArea(final Location loc) {
         final Location l2 = loc.getLocation().getLevel().getSpawnLocation().getLocation();

@@ -99,7 +99,7 @@ public class PermissionListener implements Listener
         final Player player = blockBreakEvent.getPlayer();
         final Guild guildByLoc = GuildManager.getGuildByLoc(player.getLocation());
         if (Config.ENABLE_STONIARKA) {
-            GeneratorManager.repairGenerator(player, blockBreakEvent);
+            GeneratorManager.repairGenerator(blockBreakEvent);
         }
         if (guildByLoc != null && guildByLoc.isMember(player)) {
             final User user = UserManager.getUser(player);

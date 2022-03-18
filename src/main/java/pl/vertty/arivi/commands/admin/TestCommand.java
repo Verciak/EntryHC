@@ -1,17 +1,11 @@
 package pl.vertty.arivi.commands.admin;
 
 import cn.nukkit.Player;
-import cn.nukkit.Server;
 import cn.nukkit.command.CommandSender;
-import cn.nukkit.utils.Config;
 import org.apache.commons.lang3.StringUtils;
-import pl.vertty.arivi.Main;
 import pl.vertty.arivi.commands.builder.Command;
 import pl.vertty.arivi.enums.GroupType;
-import pl.vertty.arivi.managers.ACManager;
 import pl.vertty.arivi.utils.ChatUtil;
-
-import java.util.Enumeration;
 
 public class TestCommand extends Command
 {

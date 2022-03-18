@@ -20,14 +20,28 @@ import cn.nukkit.Player;
 
 public class GeneratorManager
 {
-    public static void repairGenerator(final Player player, final BlockBreakEvent blockBreakEvent) {
+    public static void repairGenerator(final BlockBreakEvent blockBreakEvent) {
         final Block block = blockBreakEvent.getBlock();
         final Guild guild = GuildManager.getGuild(block.getLocation());
         final Block block2 = blockBreakEvent.getBlock().getLocation().subtract(0.0, 1.0, 0.0).getLevelBlock();
-        if (block2.getId() != 121) {
-            return;
-        }
+        final Block block1 = blockBreakEvent.getBlock().getLocation().subtract(0.0, 2.0, 0.0).getLevelBlock();
         if (block.getId() == 1) {
+            new NukkitRunnable() {
+                public void run() {
+                    if (block1.getId() != 121) {
+                        return;
+                    }
+                    if (guild != null && guild.isMember(blockBreakEvent.getPlayer().getName()) && guild.getLastExplodeTime() + TimeUtil.SECOND.getTime(120) > System.currentTimeMillis()) {
+                        return;
+                    }
+                    final Combat combat = CombatManager.getCombat(blockBreakEvent.getPlayer());
+                    if (guild != null && guild.isMember(blockBreakEvent.getPlayer().getName()) && combat != null && combat.hasFight()) {
+                        return;
+                    }
+                    final Level l = Server.getInstance().getDefaultLevel();
+                    l.setBlock(new Vector3(block1.getX(), block1.getY() + 2.0, block1.getZ()), Block.get(1));
+                }
+            }.runTaskLater(Main.getPlugin(), 35);
             new NukkitRunnable() {
                 public void run() {
                     if (block2.getId() != 121) {
@@ -43,13 +57,14 @@ public class GeneratorManager
                     final Level l = Server.getInstance().getDefaultLevel();
                     l.setBlock(new Vector3(block2.getX(), block2.getY() + 1.0, block2.getZ()), Block.get(1));
                 }
-            }.runTaskLater((Plugin)Main.getPlugin(), 40);
+            }.runTaskLater(Main.getPlugin(), 35);
         }
     }
     
     public static void createGenerator(final Player player, final BlockPlaceEvent blockPlaceEvent) {
         final Block block = blockPlaceEvent.getBlock();
         final Guild guild = GuildManager.getGuild(block.getLocation());
+        final Block block1 = blockPlaceEvent.getBlock().getLocation().add(0.0, 2.0, 0.0).getLevelBlock();
         final Block block2 = blockPlaceEvent.getBlock().getLocation().add(0.0, 1.0, 0.0).getLevelBlock();
         if (blockPlaceEvent.isCancelled()) {
             return;
@@ -69,5 +84,7 @@ public class GeneratorManager
         }
         final Level l = Server.getInstance().getDefaultLevel();
         l.setBlock(new Vector3(block2.getX(), block2.getY(), block2.getZ()), Block.get(1));
+        l.setBlock(new Vector3(block1.getX(), block1.getY(), block1.getZ()), Block.get(1));
+
     }
 }

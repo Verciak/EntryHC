@@ -1,6 +1,7 @@
 
 package pl.vertty.arivi.commands.guild;
 
+import pl.vertty.arivi.Main;
 import pl.vertty.arivi.objects.guild.Guild;
 import pl.vertty.arivi.objects.User;
 import cn.nukkit.Server;
@@ -20,6 +21,7 @@ public class GuildCreateCommand extends PlayerCommand
 {
     @Override
     public boolean onCommand(final Player player, final String[] array) {
+        final cn.nukkit.utils.Config c = Main.getPlugin().getConfig();
         if (GuildManager.getGuild(player) != null) {
             player.sendMessage(ChatUtil.fixColor(Config.GUILD_IS_GUILD));
             return false;
@@ -30,6 +32,10 @@ public class GuildCreateCommand extends PlayerCommand
         }
         final String upperCase = array[1].toUpperCase();
         final String s = array[2];
+        if (!c.getBoolean("enable.guilds.status")) {
+            ChatUtil.sendFullTitle(player, "&9GILDIE", "&cGildie sa tymczasowo wylaczone!");
+            return false;
+        }
         if (upperCase.length() > 4 || upperCase.length() < 2 || s.length() > 32 || s.length() < 4) {
             player.sendMessage(ChatUtil.fixColor(Config.GUILD_COMMAND_CREATE_ERROR4));
             return false;

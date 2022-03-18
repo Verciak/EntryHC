@@ -12,8 +12,10 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.math.BlockFace;
+import cn.nukkit.math.Vector3;
 import cn.nukkit.utils.Faceable;
 import pl.vertty.arivi.Cooldown;
+import pl.vertty.arivi.drop.utils.Util;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.objects.User;
 import pl.vertty.arivi.managers.UserManager;
@@ -21,64 +23,49 @@ import pl.vertty.arivi.utils.ChatUtil;
 
 public class PhaseListener implements Listener {
 
-    private boolean inBlock(final Location loc) {
-        Block b1 = getBlock(loc.getLevel(), loc.getFloorX(), loc.getFloorY(), loc.getFloorZ(), false);
-        Location lup = loc.getSide(BlockFace.UP).getLocation();
-        Block b2 = getBlock(loc.getLevel(), lup.getFloorX(), lup.getFloorY(), lup.getFloorZ(), false);
-        return b1.isNormalBlock() && b2.isNormalBlock() && b1.getId() != BlockID.AIR && b2.getId() != BlockID.AIR
-                && !(b1 instanceof BlockFence) && !(b2 instanceof BlockFence)
-                && !(b1 instanceof Faceable) && !(b2 instanceof Faceable) && !b2.canPassThrough() && !b1.canPassThrough();
-    }
 
-    @EventHandler
-    public void onPhase(PlayerMoveEvent e){
-        Player p = e.getPlayer();
-        if(!p.isOp()) {
-            if (e.getFrom().clone().setComponents(e.getFrom().getX(), 0, e.getFrom().getZ()).distance(e.getTo().clone().setComponents(e.getTo().getX(), 0, e.getTo().getZ())) >= 4) {
-                if(UserManager.getUser(p).can(GroupType.HELPER)){
-                    return;
-                }
-                e.getPlayer().teleport(e.getFrom());
+    @EventHandler(ignoreCancelled = false)
+    public void onPhase2(PlayerMoveEvent e) {
+        User user = UserManager.getUser(e.getPlayer());
+        if (user.can(GroupType.HELPER))
+            return;
+        if (e.getTo().getY() < 0.0D) {
+            e.getPlayer().teleport(Util.getHighestLocation(e.getFrom()));
+            return;
+        }
+        if (e.getFrom().clone().setComponents(e.getFrom().getX(), 0.0D, e.getFrom().getZ()).distance((Vector3) e.getTo().clone().setComponents(e.getTo().getX(), 0.0D, e.getTo().getZ())) > 3.0D) {
+            e.getPlayer().teleport(e.getFrom());
+            if (!Cooldown.getInstance().has(e.getPlayer(), "phase1")) {
                 for (Player paa : Server.getInstance().getOnlinePlayers().values()) {
                     User ua = UserManager.getUser(paa);
                     if (ua.can(GroupType.HELPER)) {
-                        if (!Cooldown.getInstance().has(paa, "PHASE")) {
-                            ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + p.getName() + " &7probuje &3przejsc przez sciane! &8(&f"+p.getPing()+"ms&8)!");
-                            Cooldown.getInstance().add(paa, "PHASE", 5f);
+                        ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &8(&7ruch byl zbyt odlegly&8) &8(&f" + e.getPlayer().getPing() + "ms&8)!");
+                        Cooldown.getInstance().add(e.getPlayer(), "phase1", 2.0F);
+                    }
+                }
+            }
+        } else if (e.getFrom().getFloorX() != e.getTo().getFloorX() || e.getFrom().getFloorZ() != e.getTo().getFloorZ() || e.getFrom().getFloorY() != e.getTo().getFloorY()) {
+            if (inBlock(e.getFrom()) && inBlock(e.getTo())) {
+                e.getPlayer().teleport(e.getFrom());
+                if (!Cooldown.getInstance().has(e.getPlayer(), "phase2")) {
+                    for (Player paa : Server.getInstance().getOnlinePlayers().values()) {
+                        User ua = UserManager.getUser(paa);
+                        if (ua.can(GroupType.HELPER)) {
+                            ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &8(&7probuje chodzic za sciana, kiedy jest w scianie&8) &8(&f" + e.getPlayer().getPing() + "ms&8)!");
+                            Cooldown.getInstance().add(e.getPlayer(), "phase2", 2.0F);
                         }
                     }
                 }
-            } else {
-                if ((e.getFrom().getFloorX() != e.getTo().getFloorX()) || (e.getFrom().getFloorZ() != e.getTo().getFloorZ()) || (e.getFrom().getFloorY() != e.getTo().getFloorY())) {
-                    if (inBlock(e.getFrom()) && inBlock(e.getTo())) {
-                        if(UserManager.getUser(p).can(GroupType.HELPER)){
-                            return;
-                        }
-                        e.getPlayer().teleport(e.getFrom());
-                        for (Player paa : Server.getInstance().getOnlinePlayers().values()) {
-                            User ua = UserManager.getUser(paa);
-                            if (ua.can(GroupType.HELPER)) {
-                                if (!Cooldown.getInstance().has(paa, "PHASE2")) {
-                                    ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + p.getName() + " &7probuje &3przejsc przez sciane, bedac w niej! &8(&f"+p.getPing()+"ms&8)!");
-                                    Cooldown.getInstance().add(paa, "PHASE2", 5f);
-                                }
-                            }
-                        }
-                        return;
-                    }
-                    if (!inBlock(e.getFrom()) && inBlock(e.getTo())) {
-                        if(UserManager.getUser(p).can(GroupType.HELPER)){
-                            return;
-                        }
-                        e.getPlayer().teleport(e.getFrom());
-                        for (Player paa : Server.getInstance().getOnlinePlayers().values()) {
-                            User ua = UserManager.getUser(paa);
-                            if (ua.can(GroupType.HELPER)) {
-                                if (!Cooldown.getInstance().has(paa, "PHASE3")) {
-                                    ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + p.getName() + " &7probuje &3wejsc w sciane! &8(&f"+p.getPing()+"ms&8)!");
-                                    Cooldown.getInstance().add(paa, "PHASE3", 5f);
-                                }
-                            }
+                return;
+            }
+            if (!inBlock(e.getFrom()) && inBlock(e.getTo())) {
+                e.getPlayer().teleport(e.getFrom());
+                if (!Cooldown.getInstance().has(e.getPlayer(), "phase3")) {
+                    for (Player paa : Server.getInstance().getOnlinePlayers().values()) {
+                        User ua = UserManager.getUser(paa);
+                        if (ua.can(GroupType.HELPER)) {
+                            ChatUtil.sendMessage(paa, "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &8(&7probuje chodzic za sciana&8) &8(&f" + e.getPlayer().getPing() + "ms&8)!");
+                            Cooldown.getInstance().add(e.getPlayer(), "phase3", 2.0F);
                         }
                     }
                 }
@@ -86,22 +73,12 @@ public class PhaseListener implements Listener {
         }
     }
 
+    private boolean inBlock(Location loc) {
+        Block b1 = Util.getBlock(loc.getLevel(), loc.getFloorX(), loc.getFloorY(), loc.getFloorZ(), false);
+        Location lup = loc.getSide(BlockFace.UP).getLocation();
+        Block b2 = Util.getBlock(loc.getLevel(), lup.getFloorX(), lup.getFloorY(), lup.getFloorZ(), false);
+        return (b1.isNormalBlock() && b2.isNormalBlock() && b1.getId() != 0 && b2.getId() != 0 && !(b1 instanceof cn.nukkit.block.BlockFence) && !(b2 instanceof cn.nukkit.block.BlockFence) && !(b1 instanceof cn.nukkit.utils.Faceable) && !(b2 instanceof cn.nukkit.utils.Faceable) &&
 
-    public static Block getBlock(Level level, int x, int y, int z, boolean load) {
-        int fullState;
-        if (y >= 0 && y < 256) {
-            int cx = x >> 4, cz = z >> 4;
-            BaseFullChunk chunk = load ? level.getChunk(cx, cz) : level.getChunkIfLoaded(cx, cz);
-            fullState = chunk != null ? chunk.getFullBlock(x & 15, y, z & 15) : 0;
-        } else {
-            fullState = 0;
-        }
-        Block block = Block.fullList[fullState & 4095].clone();
-        block.x = x;
-        block.y = y;
-        block.z = z;
-        block.level = level;
-        return block;
+                !b2.canPassThrough() && !b1.canPassThrough());
     }
-
 }

@@ -28,7 +28,7 @@ public class PerformanceCommand extends Command
         ChatUtil.sendMessage(sender, "&8>>  &7Wolny RAM: &3" + Runtime.getRuntime().freeMemory() / 1024L / 1024L + "MB");
         ChatUtil.sendMessage(sender, "&7");
         try {
-            ChatUtil.sendMessage(sender, "&8>>  &7Zuzycie procesora: &3" + this.getProcessCpuLoad() + "%");
+            ChatUtil.sendMessage(sender, "&8>>  &7Zuzycie procesora: &3" + getProcessCpuLoad() + "%");
         } catch (Exception e) {
             e.printStackTrace();
         }

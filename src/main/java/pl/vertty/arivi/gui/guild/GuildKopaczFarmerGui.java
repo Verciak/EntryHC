@@ -3,6 +3,7 @@ package pl.vertty.arivi.gui.guild;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.DyeColor;
 import pl.vertty.arivi.Main;
 import pl.vertty.arivi.objects.User;
@@ -24,11 +25,11 @@ public class GuildKopaczFarmerGui
         final InventoryCategory category = new InventoryCategory();
         final User user = UserManager.getUser(player);
         Guild g = GuildManager.getGuild(player);
-        category.setSmallFarmerServerGui();
+        category.setDoubleGuildMembersGui();
 
 
 
-        category.addElement(11, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&7Dodaj kratki", new String[]{"", "&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
+        category.addElement(11, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 1 kratke", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
             @Override
             public void onClick(Player p0, Item p1) {
                 if(user.kratki >= g.getRegion().getSize()){
@@ -37,10 +38,43 @@ public class GuildKopaczFarmerGui
                     return;
                 }
                 user.kratki = user.kratki + 1;
-                GuildKopaczFarmerGui.openTopki(p0);
+                if(user.kratki >= g.getRegion().getSize()){
+                    user.kratki = g.getRegion().getSize();
+                }
+                GuildBoyFarmerGui.openTopki(p0);
             }
         });
-        category.addElement(15, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&7Odejmij kratki", new String[]{"", "&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
+        category.addElement(20, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
+            @Override
+            public void onClick(Player p0, Item p1) {
+                if(user.kratki >= g.getRegion().getSize()){
+                    ChatUtil.sendMessage(p0, "&cNie mozesz dodac juz kratek");
+                    menu.forceDestroy(p0);
+                    return;
+                }
+                user.kratki = user.kratki + 3;
+                if(user.kratki >= g.getRegion().getSize()){
+                    user.kratki = g.getRegion().getSize();
+                }
+                GuildBoyFarmerGui.openTopki(p0);
+            }
+        });
+        category.addElement(29, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
+            @Override
+            public void onClick(Player p0, Item p1) {
+                if(user.kratki >= g.getRegion().getSize()){
+                    ChatUtil.sendMessage(p0, "&cNie mozesz dodac juz kratek");
+                    menu.forceDestroy(p0);
+                    return;
+                }
+                user.kratki = user.kratki + 5;
+                if(user.kratki >= g.getRegion().getSize()){
+                    user.kratki = g.getRegion().getSize();
+                }
+                GuildBoyFarmerGui.openTopki(p0);
+            }
+        });
+        category.addElement(15, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 1 kratke", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
             @Override
             public void onClick(Player p0, Item p1) {
                 if(user.kratki <= 5){
@@ -49,10 +83,43 @@ public class GuildKopaczFarmerGui
                     return;
                 }
                 user.kratki = user.kratki - 1;
-                GuildKopaczFarmerGui.openTopki(p0);
+                if(user.kratki <= 5){
+                    user.kratki = 5;
+                }
+                GuildBoyFarmerGui.openTopki(p0);
             }
         });
-        category.addElement(22, new ItemData(Item.NETHER_STAR, 0, 1, "&7Rozpocznij tworzenie &fKopacza", new String[]{"","&8>> &7Kliknij, aby rozpoczac!"}), new ItemClick() {
+        category.addElement(24, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
+            @Override
+            public void onClick(Player p0, Item p1) {
+                if(user.kratki <= 5){
+                    ChatUtil.sendMessage(p0, "&cNie mozesz odjac juz kratek");
+                    menu.forceDestroy(p0);
+                    return;
+                }
+                user.kratki = user.kratki - 2;
+                if(user.kratki <= 5){
+                    user.kratki = 5;
+                }
+                GuildBoyFarmerGui.openTopki(p0);
+            }
+        });
+        category.addElement(33, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
+            @Override
+            public void onClick(Player p0, Item p1) {
+                if(user.kratki <= 5){
+                    ChatUtil.sendMessage(p0, "&cNie mozesz odjac juz kratek");
+                    menu.forceDestroy(p0);
+                    return;
+                }
+                user.kratki = user.kratki - 5;
+                if(user.kratki <= 5){
+                    user.kratki = 5;
+                }
+                GuildBoyFarmerGui.openTopki(p0);
+            }
+        });
+        category.addElement(31, new ItemData(Item.END_CRYSTAL, 0, 1, "&r&9Rozpocznij tworzenie &fKopacza", new String[]{"","&r&8>> &aKliknij, aby rozpoczac!"}), new ItemClick() {
             @Override
             public void onClick(Player p0, Item p1) {
                 if(g.getSkarbiec() < (g.getRegion().getSize() * user.kratki / 2)){
@@ -65,7 +132,16 @@ public class GuildKopaczFarmerGui
 
             }
         });
-        category.addElement(4, new ItemData(Item.BOOK, 0, 1, "&7Informacje", new String[]{"", "&8>> &7Twoj rozmiar gildii: &9" + g.getRegion().getSize(), "&8>> &7Aktualna ilosc kratek od srodka: &9" + user.kratki, "", "&8>> &7Koszt stworzenia &fKopacza&7:&9 " +(g.getRegion().getSize() * user.kratki / 2), "&8>> &7Aktualnie emeraldow w skrabcu:&9 " +g.getSkarbiec()}));
+        category.addElement(13, new ItemData(Item.BOOK, 0, 1, "&r&9Informacje", new String[]{"", "&r&8>> &7Twoj rozmiar gildii: &9" + g.getRegion().getSize(), "&r&8>> &7Aktualna ilosc kratek od srodka: &9" + user.kratki, "", "&r&8>> &7Koszt stworzenia &fBoyFarmera&7:&9 " +(g.getRegion().getSize() * user.kratki / 2), "&r&8>> &7Aktualnie emeraldow w skrabcu:&9 " +g.getSkarbiec()}));
+
+        category.addElement(49, ItemData.fromItem(new Item(ItemID.NETHER_STAR).setCustomName(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&9Wroc")).setLore(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&8» &7Kliknij aby wrocic!"))), new ItemClick() {
+            @Override
+            public void onClick(final Player player, final Item item) {
+                GuildPanelGui.openInv(player);
+            }
+        });
+
+        menu.setDoubleChest();
         menu.setMainCategory(category);
         menu.addCategory("GuildKopaczFarmerGui", category);
         menu.setName(ChatUtil.fixColor("&9Panel Kopaczy"));

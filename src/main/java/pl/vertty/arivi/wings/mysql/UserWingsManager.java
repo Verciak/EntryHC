@@ -34,7 +34,7 @@ public class UserWingsManager
     
     public void setWings(final String wings) {
         this.wings = wings;
-        Main.getStore().asyncUpdate("UPDATE `pCGuilds_wings` SET `wings` ='" + this.getWings() + "' WHERE `name` ='" + this.getName() + "'");
+        Main.getStore().update("UPDATE `pCGuilds_wings` SET `wings` ='" + this.getWings() + "' WHERE `name` ='" + this.getName() + "'");
     }
     
     public String getName() {
@@ -46,6 +46,6 @@ public class UserWingsManager
     }
     
     private void insert() {
-        Main.getStore().asyncUpdate("INSERT INTO `pCGuilds_wings`(`id`, `name`, `wings`) VALUES (NULL, '" + this.getName() + "','" + this.getWings() + "')");
+        Main.getStore().update("INSERT INTO `pCGuilds_wings`(`id`, `name`, `wings`) VALUES (NULL, '" + this.getName() + "','" + this.getWings() + "')");
     }
 }

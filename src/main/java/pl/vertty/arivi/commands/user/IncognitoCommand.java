@@ -39,29 +39,29 @@ public class IncognitoCommand extends PlayerCommand
         final User user = UserManager.getUser(player);
         final InventoryMenu menu = new InventoryMenu();
         final InventoryCategory category = new InventoryCategory();
-        category.addElement(12, ItemData.fromItem(new Item(397, Integer.valueOf(0), 1).setCustomName(ChatUtil.fixColor("&9UKRYWANIE SKINA")).setLore(new String[] { String.valueOf(new StringBuilder().append(ChatUtil.fixColor("&8» &7Status: &9")).append(user.isIncognitoSkin() ? "ON" : "OFF")), ChatUtil.fixColor("&8» &7Kliknij aby zmienic!") })), new ItemClick() {
-            @Override
-            public void onClick(final Player p, final Item item) throws SkinChangeException {
-                if (!user.isIncognitoSkin()) {
-                    user.setIncognitoSkin(true);
-                    ChatUtil.sendTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_TITLE));
-                    ChatUtil.sendSubTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_SUBTITLE));
-                    if (COOLDOWN.isOnCooldown(player)) {
-                        ChatUtil.sendFullTitle(player, "&9INCOGNITO", "&7MUSISZ ODCZEKAC 10 MINUT!");
-                        return;
-                    }
-                    COOLDOWN.putOnCooldown(player, TimeUnit.MINUTES, 10L);
-                    SkinUtil.changeSkin(p);
-                    IncognitoCommand.openInv(p);
-                    return;
-                }
-                user.setIncognitoSkin(false);
-                ChatUtil.sendTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_TITLE));
-                ChatUtil.sendSubTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_SUBTITLE2));
-                IncognitoCommand.openInv(p);
-                SkinUtil.resetSkin(p);
-            }
-        });
+//        category.addElement(12, ItemData.fromItem(new Item(397, Integer.valueOf(0), 1).setCustomName(ChatUtil.fixColor("&9UKRYWANIE SKINA")).setLore(new String[] { String.valueOf(new StringBuilder().append(ChatUtil.fixColor("&8» &7Status: &9")).append(user.isIncognitoSkin() ? "ON" : "OFF")), ChatUtil.fixColor("&8» &7Kliknij aby zmienic!") })), new ItemClick() {
+//            @Override
+//            public void onClick(final Player p, final Item item) throws SkinChangeException {
+//                if (!user.isIncognitoSkin()) {
+//                    user.setIncognitoSkin(true);
+//                    ChatUtil.sendTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_TITLE));
+//                    ChatUtil.sendSubTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_SUBTITLE));
+//                    if (COOLDOWN.isOnCooldown(player)) {
+//                        ChatUtil.sendFullTitle(player, "&9INCOGNITO", "&7MUSISZ ODCZEKAC 10 MINUT!");
+//                        return;
+//                    }
+//                    COOLDOWN.putOnCooldown(player, TimeUnit.MINUTES, 10L);
+//                    SkinUtil.changeSkin(p);
+//                    IncognitoCommand.openInv(p);
+//                    return;
+//                }
+//                user.setIncognitoSkin(false);
+//                ChatUtil.sendTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_TITLE));
+//                ChatUtil.sendSubTitle(p, ChatUtil.fixColor(Config.GUILD_COMMAND_INCOGNITO_SUBTITLE2));
+//                IncognitoCommand.openInv(p);
+//                SkinUtil.resetSkin(p);
+//            }
+//        });
         category.addElement(13, ItemData.fromItem(new Item(421).setCustomName(ChatUtil.fixColor("&9UKRYWANIE NICKU")).setLore(new String[] { String.valueOf(new StringBuilder().append(ChatUtil.fixColor("&8» &7Status: &9")).append(user.isIncognitoNick() ? "ON" : "OFF")), ChatUtil.fixColor("&8» &7Kliknij aby zmienic!") })), new ItemClick() {
             @Override
             public void onClick(final Player p, final Item item) {

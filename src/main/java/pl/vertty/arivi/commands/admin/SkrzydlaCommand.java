@@ -35,7 +35,7 @@ public class SkrzydlaCommand extends Command
             ChatUtil.sendMessage(commandSender, "&7Dostepne skrzydla:");
             final String path = SkrzydlaCommand.plugin.getDataFolder() + "/wings";
             final File actual = new File(path);
-            final List<String> fileNames = new ArrayList<String>();
+            final List<String> fileNames = new ArrayList<>();
             for (final File file : actual.listFiles()) {
                 fileNames.add(file.getName());
             }

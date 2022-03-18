@@ -46,18 +46,14 @@ config:
         - wb
         - repair all
 enable:
-  guilds:
-    status: true
-    items-normal: 57:0-16:Blok Diametowy;133:0-16:Blok Emeraldu;
-    items-vip: 57:0-12:Blok Diametowy;133:0-12:Blok Emeraldu;
-    items-svip: 57:0-8:Blok Diametowy;133:0-8:Blok Emeraldu;
   kits:
     status: true
     message: '&cKity dostepne beda o 21:00!'
   enchant:
     status: true
-    message: '&cEnchanty na miecze i sety sa tymczasowo wylaczone!'
   pandora:
+    status: false
+  guilds:
     status: true
 limit:
   kox: 1
@@ -67,10 +63,12 @@ limit:
   arrow: 64
   tnt: 3
 automsg:
-  - '&7testowa'
-  - '&ctestowa2'
+  - '&9ENTRYHC &8>> &7Sprawdz mozliwosci rang &9PREMIUM&7! &f/vip, /svip, /sponsor'
+  - '&9ENTRYHC &8>> &7Chcesz byc na biezaco? Odwiedz naszego discorda &9dc.entryhc.pl&7!'
+  - '&9ENTRYHC &8>> &7Masz problem, cheatera, lub jakis blad? Zglos go! &9/helpop'
+  - '&9ENTRYHC &8>> &7Nasza strona internetowa: &9entryhc.pl'
 wl:
-  motd: '&3WaterPE.pl'
+  motd: '&3xxxxx'
   enable: true
   list:
     - VerttyPL
@@ -78,12 +76,11 @@ wl:
 border: 600
 borderd: 600.0
 protection:
-  have-player: '&7Gracz {NAME} posiada ochrone jeszcze przez {TIME}'
+  have-player: '&7Gracz &9{NAME} &7posiada ochrone jeszcze przez &9{TIME}'
   end-title: '&9OCHRONA'
   end-subtitle: '&6Twoja ochrona dobiegla konca'
   actionbar: '&9[OCHRONA] &6{TIME}'
-inventory-from-stone: '&c&lDROP ZE STONE'
-bc-level: '&7Gracz {NICK} awansowal na {LVL} kopania!'
+bc-level: '&7Gracz &9{NICK} &7awansowal na &9{LVL} &7kopania!'
 drop:
   name: '&r&9{NAME}'
   lore: ' &r&8>> &7Szansa: &3{CHANCE}%{N} &r&8>> &7Wypada pomiedzy: &7Y:&30 &7a &3{HEIGHT}

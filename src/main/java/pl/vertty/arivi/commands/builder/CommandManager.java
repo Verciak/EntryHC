@@ -8,6 +8,7 @@ import cn.nukkit.command.CommandMap;
 import cn.nukkit.command.SimpleCommandMap;
 import pl.vertty.arivi.utils.Reflection;
 import java.util.HashMap;
+import java.util.List;
 
 public class CommandManager
 {
@@ -23,12 +24,12 @@ public class CommandManager
         CommandManager.commands.put(cmd.getName(), cmd);
         UnknownCommandListener.registeredCommands.add(cmd.getName());
         if (cmd.getAliases() != null) {
-            UnknownCommandListener.registeredCommands.addAll(Arrays.asList(String.valueOf(cmd.getAliases())));
+            UnknownCommandListener.registeredCommands.addAll(List.of(Arrays.toString(cmd.getAliases())));
         }
     }
     
     static {
-        commands = new HashMap<String, Command>();
+        commands = new HashMap<>();
         f = Reflection.getField(PluginManager.class, "commandMap", SimpleCommandMap.class);
         CommandManager.cmdMap = CommandManager.f.get(Server.getInstance().getPluginManager());
     }

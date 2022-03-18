@@ -4,6 +4,8 @@ package pl.vertty.arivi.listeners.guild;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.event.EventPriority;
 import java.util.Iterator;
+
+import pl.vertty.arivi.gui.guild.GuildPanelGui;
 import pl.vertty.arivi.objects.guild.Guild;
 import cn.nukkit.block.Block;
 import org.apache.commons.lang3.StringUtils;
@@ -77,7 +79,7 @@ public class PlayerInteractListener implements Listener
             final Guild guild = GuildManager.getGuild(clickedBlock.getLocation());
             if (clickedBlock.getId() == 19 && guild != null) {
                 if (guild.isMember(player.getName())) {
-                    GuildPanelCommand.openInv(player);
+                    GuildPanelGui.openInv(player);
                     return;
                 }
                 if (guild.isMember(player.getName())) {

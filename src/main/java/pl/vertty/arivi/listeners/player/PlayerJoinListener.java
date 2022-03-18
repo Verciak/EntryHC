@@ -3,7 +3,8 @@ package pl.vertty.arivi.listeners.player;
 
 import cn.nukkit.Server;
 import cn.nukkit.block.Block;
-import cn.nukkit.event.player.PlayerTeleportEvent;
+import cn.nukkit.entity.data.Skin;
+import cn.nukkit.event.player.*;
 import cn.nukkit.level.Location;
 import cn.nukkit.math.Vector3;
 import pl.vertty.arivi.MainConstants;
@@ -11,13 +12,11 @@ import pl.vertty.arivi.drop.utils.RandomUtils;
 import cn.nukkit.item.Item;
 import cn.nukkit.network.protocol.SetLocalPlayerAsInitializedPacket;
 import cn.nukkit.event.server.DataPacketReceiveEvent;
-import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.network.protocol.DataPacket;
 
 import java.io.IOException;
 import java.util.Iterator;
 
-import cn.nukkit.event.player.PlayerJoinEvent;
 import cn.nukkit.event.EventPriority;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.objects.Role;
@@ -36,23 +35,32 @@ import pl.vertty.arivi.drop.base.utils.UserUtils;
 import pl.vertty.arivi.wings.WingsManager;
 import pl.vertty.arivi.wings.mysql.UserWings;
 import pl.vertty.arivi.managers.UserManager;
-import cn.nukkit.event.player.PlayerLoginEvent;
 import cn.nukkit.event.Listener;
 
 public class PlayerJoinListener implements Listener
 {
+
+
+    @EventHandler(ignoreCancelled = true)
+    public void onChangeSkin(PlayerChangeSkinEvent e) {
+        Player p = e.getPlayer();
+        Skin newSkin = e.getSkin();
+        if (newSkin == null || newSkin.isPersona() || !newSkin.isValid()) {
+            e.setCancelled();
+            return;
+        }
+    }
+
     @EventHandler
-    public void onCreate(final PlayerLoginEvent e) {
+    public void onCreate(final PlayerLoginEvent e) throws IOException {
         final Player p = e.getPlayer();
         final pl.vertty.arivi.objects.User u = UserManager.getUser(p);
         Role role = RoleManager.getUser(p);
         ItemShop is = ItemShopManager.getUser(p);
         p.setGamemode(0);
-        if (UserWings.getUser(p) != null && UserWings.getUser(p).getWings() != null) {
-            try {
+        if(UserWings.getUser(p) != null){
+            if(UserWings.getUser(p).getWings() != null){
                 WingsManager.setRatWings(p, WingsManager.getWings(UserWings.getUser(p).getWings()));
-            } catch (IOException ex) {
-                ex.printStackTrace();
             }
         }
         if(ACManager.getUser(p) == null){
