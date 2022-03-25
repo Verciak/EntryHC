@@ -5,6 +5,8 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.utils.LogLevel;
 import lombok.SneakyThrows;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.DiscordApiBuilder;
 import pl.vertty.arivi.entity.*;
 import pl.vertty.arivi.mysql.modes.StoreMySQL;
 import pl.vertty.arivi.objects.Combat;
@@ -58,6 +60,7 @@ public class Main extends PluginBase
     public void onEnable() {
         Main.startUpTime = System.currentTimeMillis();
         Main.plugin = this;
+
         final InventoryMenuHandler handler = new InventoryMenuHandler();
         final TradeMenuHandler handler2 = new TradeMenuHandler();
         this.getServer().getPluginManager().registerEvents(handler, this);

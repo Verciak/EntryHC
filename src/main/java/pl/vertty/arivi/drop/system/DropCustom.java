@@ -20,6 +20,7 @@ import pl.vertty.arivi.drop.utils.StringUtils;
 import pl.vertty.arivi.drop.utils.Util;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.managers.UserManager;
+import pl.vertty.arivi.utils.ChatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,12 @@ public class DropCustom implements DropData
                 continue;
             }
             final pl.vertty.arivi.objects.User ua = UserManager.getUser(player);
-            final double chance = ua.can(GroupType.VIP) ? ((user.isTurbo() || Util.isTurbo()) ? MathUtils.calcTurbo(drop.getChance() + 1.0) : (drop.getChance() + 1.0)) : ((user.isTurbo() || Util.isTurbo()) ? MathUtils.calcTurbo(drop.getChance()) : drop.getChance());
+            double chance = ua.can(GroupType.VIP) ? ((user.isTurbo() || Util.isTurbo()) ? MathUtils.calcTurbo(drop.getChance() + 1.0) : (drop.getChance() + 1.0)) : ((user.isTurbo() || Util.isTurbo()) ? MathUtils.calcTurbo(drop.getChance()) : drop.getChance());
+            if(Util.turbo_perla != 0L){
+                if (drop.getItem().getId() == Item.ENDER_PEARL){
+                    chance = chance + 2.0;
+                }
+            }
             if (!RandomUtils.getChance(chance)) {
                 continue;
             }

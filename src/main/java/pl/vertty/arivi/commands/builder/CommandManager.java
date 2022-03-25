@@ -7,6 +7,8 @@ import cn.nukkit.Server;
 import cn.nukkit.command.CommandMap;
 import cn.nukkit.command.SimpleCommandMap;
 import pl.vertty.arivi.utils.Reflection;
+
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class CommandManager
         CommandManager.commands.put(cmd.getName(), cmd);
         UnknownCommandListener.registeredCommands.add(cmd.getName());
         if (cmd.getAliases() != null) {
-            UnknownCommandListener.registeredCommands.addAll(List.of(Arrays.toString(cmd.getAliases())));
+            UnknownCommandListener.registeredCommands.addAll(Collections.singleton(Arrays.toString(cmd.getAliases())));
         }
     }
     

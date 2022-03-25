@@ -11,6 +11,7 @@ import pl.vertty.arivi.drop.base.Drop;
 import pl.vertty.arivi.drop.base.User;
 import pl.vertty.arivi.drop.base.utils.DropUtils;
 import pl.vertty.arivi.drop.base.utils.UserUtils;
+import pl.vertty.arivi.drop.utils.Util;
 import pl.vertty.arivi.inventory.InventoryCategory;
 import pl.vertty.arivi.inventory.InventoryMenu;
 import pl.vertty.arivi.inventory.InventoryMenuHandler;
@@ -30,7 +31,17 @@ public class DropStoneGui {
         for (final Drop drop : DropUtils.getDrops()) {
             Item ia = new Item(drop.getItem().getId(), 0, 1);
             ia.setCustomName(ChatUtil.fixColor(drop.getInvName()));
-            ia.setLore(ChatUtil.fixColor(c.getString("drop.lore").replace(">>", "»").replace("{CHANCE}", Double.toString(drop.getChance())).replace("{HEIGHT}", (drop.getHeight() == 0) ? "Kazda" : Integer.toString(drop.getHeight())).replace("{LVL}", (drop.getLvl() == 0) ? "Brak" : Integer.toString(drop.getLvl())).replace("{FORTUNE}", drop.isFortune() ? "&awlaczone" : "&cwylaczone").replace("{ENABLE}", drop.getDisabled().contains(player.getName()) ? "&cwylaczony" : "&awlaczony").replace("{WYKOPANE}", String.valueOf(userdrop.getDrop(drop.getName()))).replace("{N}", "\n")));
+            if(Util.turbo_perla != 0L){
+                if (drop.getItem().getId() == Item.ENDER_PEARL){
+                    ia.setLore(ChatUtil.fixColor(c.getString("drop.lorep").replace(">>", "»").replace("{CHANCE}", Double.toString(drop.getChance() + 2.0)).replace("{HEIGHT}", (drop.getHeight() == 0) ? "Kazda" : Integer.toString(drop.getHeight())).replace("{LVL}", (drop.getLvl() == 0) ? "Brak" : Integer.toString(drop.getLvl())).replace("{FORTUNE}", drop.isFortune() ? "&awlaczone" : "&cwylaczone").replace("{ENABLE}", drop.getDisabled().contains(player.getName()) ? "&cwylaczony" : "&awlaczony").replace("{WYKOPANE}", String.valueOf(userdrop.getDrop(drop.getName()))).replace("{N}", "\n")));
+                }else {
+                    ia.setLore(ChatUtil.fixColor(c.getString("drop.lore").replace(">>", "»").replace("{CHANCE}", Double.toString(drop.getChance())).replace("{HEIGHT}", (drop.getHeight() == 0) ? "Kazda" : Integer.toString(drop.getHeight())).replace("{LVL}", (drop.getLvl() == 0) ? "Brak" : Integer.toString(drop.getLvl())).replace("{FORTUNE}", drop.isFortune() ? "&awlaczone" : "&cwylaczone").replace("{ENABLE}", drop.getDisabled().contains(player.getName()) ? "&cwylaczony" : "&awlaczony").replace("{WYKOPANE}", String.valueOf(userdrop.getDrop(drop.getName()))).replace("{N}", "\n")));
+
+                }
+            }else {
+                ia.setLore(ChatUtil.fixColor(c.getString("drop.lore").replace(">>", "»").replace("{CHANCE}", Double.toString(drop.getChance())).replace("{HEIGHT}", (drop.getHeight() == 0) ? "Kazda" : Integer.toString(drop.getHeight())).replace("{LVL}", (drop.getLvl() == 0) ? "Brak" : Integer.toString(drop.getLvl())).replace("{FORTUNE}", drop.isFortune() ? "&awlaczone" : "&cwylaczone").replace("{ENABLE}", drop.getDisabled().contains(player.getName()) ? "&cwylaczony" : "&awlaczony").replace("{WYKOPANE}", String.valueOf(userdrop.getDrop(drop.getName()))).replace("{N}", "\n")));
+
+            }
             category.addElementAir(ItemData.fromItem(ia), new ItemClick() {
                 @Override
                 public void onClick(final Player player, final Item item) {

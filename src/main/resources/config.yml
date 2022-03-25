@@ -1,10 +1,10 @@
 mysql:
   prefix: core-
-  host: mysql.titanaxe.com
+  host: localhost
   port: 3306
-  user: srv207254
-  pass: 4d7Q4p88
-  name: srv207254
+  user: root
+  pass: test
+  name: mc
 check_allowed_commands:
   - wyslij
   - helpop
@@ -86,6 +86,9 @@ drop:
   lore: ' &r&8>> &7Szansa: &3{CHANCE}%{N} &r&8>> &7Wypada pomiedzy: &7Y:&30 &7a &3{HEIGHT}
     &7poziomem{N} &r&8>> &7Szczescie: &3{FORTUNE}{N} &r&8>> &7Drop: &a{ENABLE}{N}
     &r&8>> &7Punkty: &3{LVL} &7pkt.{N} &r&8>> &7Wykopane: &3{WYKOPANE}'
+  lorep: ' &r&8>> &7Szansa: &3{CHANCE}%{N} &r&8>> &7Wypada pomiedzy: &7Y:&30 &7a &3{HEIGHT}
+      &7poziomem{N} &r&8>> &7Szczescie: &3{FORTUNE}{N} &r&8>> &7Drop: &a{ENABLE}{N}
+      &r&8>> &7Punkty: &3{LVL} &7pkt.{N} &r&8>> &7Wykopane: &3{WYKOPANE}{N}{N} &r&8>> &7Trwa event: &9TurboDrop Perla'
 turbo: 0
 turbo-exp: 0
 exp:

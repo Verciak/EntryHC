@@ -6,7 +6,6 @@ import cn.nukkit.item.ItemID;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.gui.guild.GuildBoyFarmerGui;
 import pl.vertty.arivi.gui.guild.GuildKopaczFarmerGui;
-import pl.vertty.arivi.gui.guild.GuildPanelGui;
 import pl.vertty.arivi.gui.guild.GuildSandFarmerGui;
 import pl.vertty.arivi.managers.RoleManager;
 import pl.vertty.arivi.inventory.InventoryMenuHandler;
@@ -38,7 +37,7 @@ public class GuildPanelCommand extends PlayerCommand
             player.sendMessage(ChatUtil.fixColor(Config.GUILD_NOT_GUILD));
             return false;
         }
-        GuildPanelGui.openInv(player);
+//        GuildPanelGui.openInv(player);
         return false;
     }
 

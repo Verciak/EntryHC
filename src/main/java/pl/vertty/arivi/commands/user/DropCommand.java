@@ -34,7 +34,18 @@ public class DropCommand extends PlayerCommand
             ChatUtil.sendMessage(player, "&aKonfiguracja dropu zostala przeladowana");
             return true;
         }
+        if (args[0].equalsIgnoreCase("perla")) {
+            Long i = TimeUtils.getTime(args[1]);
+            if (i == 0L) {
+                player.sendMessage("§cBlad: §4Podales zly argument");
+                return false;
+            }
+            Util.turbo_perla = i + System.currentTimeMillis();
+            ChatUtil.sendMessage(player, "&axddddddd");
+            return true;
+        }
         if (args.length == 1 || args.length == 2) {
+            ChatUtil.sendMessage(player, "&6/drop perla [czas] &8-&7 wlacza turbodrop perel dla wszystkich");
             ChatUtil.sendMessage(player, "&6/drop turbo [drop/exp] [nick] [czas] &8-&7 wlacza turbodrop graczowi");
             ChatUtil.sendMessage(player, "&6/drop turbo [drop/exp] [nick] -1 &8-&7 wlacza turbodrop na zawsze");
             ChatUtil.sendMessage(player, "&6/drop turbo [drop/exp] [nick] off &8-&7 wylacza turbodrop graczowi");

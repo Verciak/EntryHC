@@ -136,7 +136,7 @@ public class GuildSandFarmerGui
         category.addElement(49, ItemData.fromItem(new Item(ItemID.NETHER_STAR).setCustomName(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&9Wroc")).setLore(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&8» &7Kliknij aby wrocic!"))), new ItemClick() {
             @Override
             public void onClick(final Player player, final Item item) {
-                GuildPanelGui.openInv(player);
+//                GuildPanelGui.openInv(player);
             }
         });
         menu.setDoubleChest();

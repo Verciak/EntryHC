@@ -5,6 +5,8 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.NukkitRunnable;
 import pl.vertty.arivi.Main;
+import pl.vertty.arivi.drop.utils.TimeUtils;
+import pl.vertty.arivi.drop.utils.Util;
 import pl.vertty.arivi.objects.Combat;
 import pl.vertty.arivi.objects.User;
 import pl.vertty.arivi.objects.guild.Guild;
@@ -22,6 +24,9 @@ public class ActionBarTask extends NukkitRunnable
             String s = "";
             final cn.nukkit.utils.Config c = Main.getPlugin().getConfig();
             final User userr = UserManager.getUser(player);
+            if (Util.turbo_perla != 0L) {
+               s = ChatUtil.fixColor("&7TurboDrop Perel: &9" + (DataUtil.secondsToString(Util.turbo_perla).isEmpty() ? "1s" : DataUtil.secondsToString(Util.turbo_perla)));
+            }
             if (userr.getOchrona() != 0L) {
                 if (userr.getOchrona() <= System.currentTimeMillis()) {
                     player.sendTitle(ChatUtil.fixColor(c.getString("protection.end-title")), ChatUtil.fixColor(c.getString("protection.end-subtitle")), 20, 40, 20);

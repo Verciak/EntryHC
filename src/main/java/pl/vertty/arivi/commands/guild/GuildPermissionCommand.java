@@ -6,7 +6,6 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
 import pl.vertty.arivi.enums.GroupType;
-import pl.vertty.arivi.gui.guild.GuildMembersGUI;
 import pl.vertty.arivi.objects.Role;
 import pl.vertty.arivi.objects.guild.Guild;
 import pl.vertty.arivi.objects.yml.Config;
@@ -39,7 +38,7 @@ public class GuildPermissionCommand extends PlayerCommand
             player.sendMessage(ChatUtil.fixColor(Config.GUILD_NOT_OWNER));
             return false;
         }
-        GuildMembersGUI.openMembers(player, guild);
+//        GuildMembersGUI.openMembers(player, guild);
         return false;
     }
 }

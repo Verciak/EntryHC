@@ -34,6 +34,7 @@ public class Util
 {
     public static long turbo;
     public static long turbo_exp;
+    public static long turbo_perla;
 
     public static Block getBlock(Level level, int x, int y, int z, boolean load) {
         int fullState;
@@ -321,5 +322,6 @@ public class Util
     static {
         Util.turbo = 0L;
         Util.turbo_exp = 0L;
+        Util.turbo_perla = 0L;
     }
 }

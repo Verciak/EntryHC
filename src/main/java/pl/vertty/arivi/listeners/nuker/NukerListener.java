@@ -11,7 +11,7 @@ import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.potion.Effect;
-import cz.creeperface.nukkit.gac.player.PlayerAntyCheatNotify;
+//import cz.creeperface.nukkit.gac.player.PlayerAntyCheatNotify;
 import pl.vertty.arivi.Cooldown;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.objects.User;
@@ -26,22 +26,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public class NukerListener implements Listener {
 
 
-    @EventHandler
-    public void onNotify(final PlayerAntyCheatNotify e) {
-        if (!Cooldown.getInstance().has(e.getPlayer(), "acnotify")) {
-            Cooldown.getInstance().add(e.getPlayer(), "acnotify", 2.0f);
-            for(Player p : Server.getInstance().getOnlinePlayers().values()){
-                User u = UserManager.getUser(p);
-                if(u.can(GroupType.HELPER)){
-                    if(e.getReason().contains("movement check 7")){
-                        ChatUtil.sendMessage(u.getPlayer(), "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &7jest podejrzany o &4SPEED (50-100%) &8(&f"+p.getPing()+"ms&8)");
-                    }else {
-                        ChatUtil.sendMessage(u.getPlayer(), "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &7jest podejrzany o &3" + e.getReason());
-                    }
-                }
-            }
-        }
-    }
+//    @EventHandler
+//    public void onNotify(final PlayerAntyCheatNotify e) {
+//        if (!Cooldown.getInstance().has(e.getPlayer(), "acnotify")) {
+//            Cooldown.getInstance().add(e.getPlayer(), "acnotify", 2.0f);
+//            for(Player p : Server.getInstance().getOnlinePlayers().values()){
+//                User u = UserManager.getUser(p);
+//                if(u.can(GroupType.HELPER)){
+//                    if(e.getReason().contains("movement check 7")){
+//                        ChatUtil.sendMessage(u.getPlayer(), "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &7jest podejrzany o &4SPEED (50-100%) &8(&f"+p.getPing()+"ms&8)");
+//                    }else {
+//                        ChatUtil.sendMessage(u.getPlayer(), "&9AC &8> &7Gracz &3" + e.getPlayer().getName() + " &7jest podejrzany o &3" + e.getReason());
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
     @EventHandler
