@@ -22,6 +22,8 @@ public class CommandsLoader
 {
     public static void onCommandsLoad() {
 //        registerCommand(new ListCommand());
+        registerCommand(new WhiteListCommand());
+        registerCommand(new KickCommand());
         registerCommand(new TestCommand());
         registerCommand(new ReloadConfigCommand());
         registerCommand(new PomocCommand());
@@ -43,7 +45,6 @@ public class CommandsLoader
         registerCommand(new CzystyCommand());
         registerCommand(new CheaterCommand());
         registerCommand(new PandoraCommand());
-        registerCommand(new StopCommand());
         registerCommand(new AdminPanelCommand());
         registerCommand(new DelHomeCommand());
         registerCommand(new DropCommand());

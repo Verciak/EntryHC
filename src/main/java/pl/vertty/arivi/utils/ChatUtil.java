@@ -33,7 +33,7 @@ public final class ChatUtil
     }
     
     public static void sendTitle(final Player p, final String title, final String subttitle) {
-        sendTitle(p, title, subttitle, 30, 40, 30);
+        sendTitle(p, title, subttitle, 20, 80, 20);
     }
     
     public static void sendTitle(final Player player, String title, String subtitle, final int fadeIn, final int stay, final int fadeOut) {

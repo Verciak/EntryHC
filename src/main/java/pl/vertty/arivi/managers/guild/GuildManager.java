@@ -121,7 +121,7 @@ public class GuildManager
     public static boolean canCreateGuildBySpawn(final Location location) {
         final int blockX = location.getLevel().getSpawnLocation().getFloorX();
         final int blockZ = location.getLevel().getSpawnLocation().getFloorZ();
-        return Math.abs(location.getFloorX() - blockX) >= 250 || Math.abs(location.getFloorZ() - blockZ) >= 250;
+        return Math.abs(location.getFloorX() - blockX) >= 200 || Math.abs(location.getFloorZ() - blockZ) >= 200;
     }
     
     private static void createRoomGuild(final Guild guild) {

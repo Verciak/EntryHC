@@ -41,12 +41,18 @@ public class BanCommand extends Command
         if (time > System.currentTimeMillis()) {
             final Ban ban = new Ban(args[0], admin, reason, time);
             BanManager.addBan(args[0], ban);
-            Server.getInstance().getPlayer(args[0]).close("ZOSTALES ZBANOWANY");
+            Player banned = Server.getInstance().getPlayer(args[0]);
+            if(banned != null){
+                banned.kick(ChatUtil.fixColor("ZOSTALES ZBANOWANY"));
+            }
             return ChatUtil.sendMessage(Server.getInstance().getOnlinePlayers().values(), "&8>> &7Gracz &c" + args[0] + " &7zostal tymczasowo zbanowany przez &c" + sender.getName() + " &7do: &c" + DataUtil.getDate(time) + " &7powod: &c" + reason);
         }
         final Ban ban = new Ban(args[0], admin, reason, 0L);
         BanManager.addBan(args[0], ban);
-        Server.getInstance().getPlayer(args[0]).close("ZOSTALES ZBANOWANY");
+        Player banned = Server.getInstance().getPlayer(args[0]);
+        if(banned != null){
+            banned.kick(ChatUtil.fixColor("ZOSTALES ZBANOWANY"));
+        }
         return ChatUtil.sendMessage(Server.getInstance().getOnlinePlayers().values(), "&8>> &7Gracz &c" + args[0] + " &7zostal permamentnie zbanowany przez &c" + sender.getName() + " &7powod: &c" + reason);
     }
 }

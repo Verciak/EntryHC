@@ -1,7 +1,11 @@
 
 package pl.vertty.arivi.listeners;
 
+import cn.nukkit.Server;
+import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.event.EventHandler;
+import cn.nukkit.event.block.BlockPlaceEvent;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
@@ -16,6 +20,17 @@ import cn.nukkit.event.Listener;
 
 public class EnchantListener implements Listener
 {
+
+    @EventHandler
+    public void onRedstone(BlockPlaceEvent e){
+        Player p = e.getPlayer();
+        Block b = e.getBlock();
+        if(b.getId() == Block.REDSTONE_BLOCK){
+            Server.getInstance().getDefaultLevel().setBlock(b.getLocation(), Block.get(BlockID.AIR));
+        }
+    }
+
+
     @EventHandler
     public void onEnchant(final PlayerInteractEvent e) {
         final Player p = e.getPlayer();

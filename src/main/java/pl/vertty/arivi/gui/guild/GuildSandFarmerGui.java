@@ -133,10 +133,10 @@ public class GuildSandFarmerGui
         });
         category.addElement(13, new ItemData(Item.BOOK, 0, 1, "&r&9Informacje", new String[]{"", "&r&8>> &7Twoj rozmiar gildii: &9" + g.getRegion().getSize(), "&r&8>> &7Aktualna ilosc kratek od srodka: &9" + user.kratki, "", "&r&8>> &7Koszt stworzenia &fBoyFarmera&7:&9 " +(g.getRegion().getSize() * user.kratki / 2), "&r&8>> &7Aktualnie emeraldow w skrabcu:&9 " +g.getSkarbiec()}));
 
-        category.addElement(49, ItemData.fromItem(new Item(ItemID.NETHER_STAR).setCustomName(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&9Wroc")).setLore(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&8» &7Kliknij aby wrocic!"))), new ItemClick() {
+        category.addElement(49, ItemData.fromItem(new Item(ItemID.NETHER_STAR).setCustomName(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&r&9Wroc")).setLore(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&r&8» &7Kliknij aby wrocic!"))), new ItemClick() {
             @Override
             public void onClick(final Player player, final Item item) {
-//                GuildPanelGui.openInv(player);
+                GuildPanelGui.openInv(player);
             }
         });
         menu.setDoubleChest();

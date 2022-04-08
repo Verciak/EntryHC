@@ -3,3 +3,27 @@ version: 0.1
 author: VerttyPL
 api: [1.0.8]
 name: VerttyCore
+
+
+commands:
+  /:
+    description: Komendy worldEdit
+    aliases:
+      - /help
+      - /set
+      - /cut
+      - /cyl
+      - /hcyl
+      - /walls
+      - /sphere
+      - /hsphere
+      - /replace
+      - /copy
+      - /paste
+      - /pos1
+      - /pos2
+      - /1
+      - /2
+      - /undo
+      - /redo
+      - /wand

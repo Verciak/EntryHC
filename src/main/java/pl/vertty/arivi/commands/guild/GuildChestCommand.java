@@ -19,54 +19,9 @@ import pl.vertty.arivi.utils.guild.command.PlayerCommand;
 
 public class GuildChestCommand extends PlayerCommand
 {
-    private static void lambda$addSignEmerald$1(final Player player, final Guild guild, final Player player2, final String[] array) {
-        final String substring = array[0].substring(1, array[0].length() - 1);
-        if (!ChatUtil.isInteger(substring)) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE5));
-            return;
-        }
-        if (substring.contains("-")) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE5));
-            return;
-        }
-        if (!player.getInventory().contains(new Item(388, Integer.valueOf(0), Integer.parseInt(substring)))) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE4));
-            return;
-        }
-        guild.setSkarbiec(guild.getSkarbiec() + Integer.parseInt(substring));
-        player.getInventory().removeItem(new Item[] { new Item(388, Integer.valueOf(0), Integer.parseInt(substring)) });
-        ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-        ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE3));
-    }
-    
-    private static void lambda$addSignHead$0(final Player player, final Guild guild, final Player player2, final String[] array) {
-        final String substring = array[0].substring(1, array[0].length() - 1);
-        if (!ChatUtil.isInteger(substring)) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE5));
-            return;
-        }
-        if (substring.contains("-")) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE5));
-            return;
-        }
-        if (!player.getInventory().contains(new Item(397, Integer.valueOf(3), Integer.parseInt(substring)))) {
-            ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-            ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE2));
-            return;
-        }
-        guild.setHead(guild.getHead() + Integer.parseInt(substring));
-        player.getInventory().removeItem(new Item[] { new Item(397, Integer.valueOf(3), Integer.parseInt(substring)) });
-        ChatUtil.sendTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_TITLE));
-        ChatUtil.sendSubTitle(player, ChatUtil.fixColor(Config.GUILD_PANEL_SKARBIEC_SUBTITLE));
-    }
     
     public GuildChestCommand() {
-        super("skarbiec", "/g skarbiec", GroupType.PLAYER, new String[0]);
+        super("skarbiec", "/g skarbiec", GroupType.PLAYER);
     }
     
     @Override

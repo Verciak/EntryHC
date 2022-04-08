@@ -3,6 +3,7 @@ package pl.vertty.arivi.task;
 
 import cn.nukkit.Player;
 import cn.nukkit.Server;
+import cn.nukkit.block.Block;
 import cn.nukkit.item.Item;
 import cn.nukkit.scheduler.NukkitRunnable;
 import cn.nukkit.utils.Config;
@@ -24,12 +25,19 @@ public class LimitTask extends NukkitRunnable
             int sSize = 0;
             int arrSize = 0;
             int tntSize = 0;
+            int redSize = 0;
             for (final Item pinv : p.getInventory().getContents().values()) {
                 if (pinv != null) {
                     if (pinv.getId() == Item.TNT) {
                         if (pinv.getCustomName().contains(ChatUtil.fixColor("&9RZUCANETNT"))) {
                             tntSize += pinv.getCount();
                         }
+                    }
+                    if (pinv.getId() == Item.REDSTONE) {
+                        if (pinv.hasCustomName()) {
+                            return;
+                        }
+                        redSize += pinv.getCount();
                     }
                     if (pinv.getId() == Item.ARROW) {
                         if (pinv.hasCustomName()) {
@@ -63,6 +71,13 @@ public class LimitTask extends NukkitRunnable
                     }
                     refSize += pinv.getCount();
                 }
+            }
+            if (redSize > 0) {
+                final int toRemove = redSize;
+                Item item = new Item(Item.REDSTONE, 0, toRemove);
+                Item items = new Item(Block.REDSTONE_BLOCK, 0, toRemove);
+                p.getInventory().removeItem(items);
+                p.getInventory().removeItem(item);
             }
             if (tntSize > LimitTask.c.getInt("limit.tnt")) {
                 final int toRemove = tntSize - LimitTask.c.getInt("limit.tnt");

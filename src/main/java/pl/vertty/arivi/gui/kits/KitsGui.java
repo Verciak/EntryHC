@@ -825,11 +825,6 @@ public class KitsGui
             category.addElement(52, new ItemData(351, 10, 1, "&r&aODBIERZ ZESTAW"), new ItemClick() {
                 @Override
                 public void onClick(final Player p, final Item item) {
-                    if (!c.getBoolean("enable.kits.status")) {
-                        ChatUtil.sendTitle(p, "&9KITY", ChatUtil.fixColor(c.getString("enable.kits.message")));
-                        menu.forceDestroy(player);
-                        return;
-                    }
 
                     if (isActive(u.getKit_mieso()) && !u.can(GroupType.ADMIN)) {
                         p.sendMessage(ChatUtil.fixColor(" &8>> &cKit MIESO mozesz odebrac dopiero za: &3" + DataUtil.parseLong(u.getKit_mieso() - System.currentTimeMillis(), false)));
@@ -852,11 +847,6 @@ public class KitsGui
                 category.addElement(52, new ItemData(351, 10, 1, "&r&aODBIERZ ZESTAW"), new ItemClick() {
                     @Override
                     public void onClick(final Player p, final Item item) {
-                        if (!c.getBoolean("enable.kits.status")) {
-                            ChatUtil.sendTitle(p, "&9KITY", ChatUtil.fixColor(c.getString("enable.kits.message")));
-                            menu.forceDestroy(player);
-                            return;
-                        }
 
                         if (isActive(u.getKit_mieso()) && !u.can(GroupType.ADMIN)) {
                             p.sendMessage(ChatUtil.fixColor(" &8>> &cKit MIESO mozesz odebrac dopiero za: &3" + DataUtil.parseLong(u.getKit_mieso() - System.currentTimeMillis(), false)));
@@ -914,11 +904,6 @@ public class KitsGui
             category.addElement(52, new ItemData(351, 10, 1, "&r&aODBIERZ ZESTAW"), new ItemClick() {
                 @Override
                 public void onClick(final Player p, final Item item) {
-                    if (!c.getBoolean("enable.kits.status")) {
-                        ChatUtil.sendTitle(p, "&9KITY", ChatUtil.fixColor(c.getString("enable.kits.message")));
-                        menu.forceDestroy(player);
-                        return;
-                    }
 
                     if (isActive(u.getKit_start()) && !u.can(GroupType.ADMIN)) {
                         p.sendMessage(ChatUtil.fixColor(" &8>> &cKit START mozesz odebrac dopiero za: &3" + DataUtil.parseLong(u.getKit_start() - System.currentTimeMillis(), false)));
@@ -944,11 +929,6 @@ public class KitsGui
                 category.addElement(52, new ItemData(351, 10, 1, "&r&aODBIERZ ZESTAW"), new ItemClick() {
                     @Override
                     public void onClick(final Player p, final Item item) {
-                        if (!c.getBoolean("enable.kits.status")) {
-                            ChatUtil.sendTitle(p, "&9KITY", ChatUtil.fixColor(c.getString("enable.kits.message")));
-                            menu.forceDestroy(player);
-                            return;
-                        }
 
                         if (isActive(u.getKit_start()) && !u.can(GroupType.ADMIN)) {
                             p.sendMessage(ChatUtil.fixColor(" &8>> &cKit START mozesz odebrac dopiero za: &3" + DataUtil.parseLong(u.getKit_start() - System.currentTimeMillis(), false)));

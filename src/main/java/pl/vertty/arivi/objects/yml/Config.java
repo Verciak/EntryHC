@@ -216,7 +216,7 @@ public class Config
         Config.GUILD_PANEL_HP_SUBTITLE = "&aOdnowiles cale hp gildi";
         Config.GUILD_PANEL_HP_SUBTITLE2 = "&cTwoja gildia posiada maksymalna liczbe hp";
         Config.GUILD_PANEL_MEMBER_TITLE = "&8[&9PANEL&8]";
-        Config.GUILD_PANEL_MEMBER_SUBTITLE = "&aPowiekszyles miejsca w gildi o 10";
+        Config.GUILD_PANEL_MEMBER_SUBTITLE = "&aPowiekszyles miejsca w gildi o 3";
         Config.GUILD_PANEL_MEMBER_SUBTITLE2 = "&cTwoja gildia posiada maksymalna liczbe czlonkow";
         Config.GUILD_PANEL_SOJUSZ_TITLE = "&8[&9PANEL&8]";
         Config.GUILD_PANEL_SOJUSZ_SUBTITLE = "&aPowiekszyles limit sojuszy w gildi o 1";
