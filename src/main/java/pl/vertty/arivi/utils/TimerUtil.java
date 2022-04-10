@@ -10,6 +10,9 @@ import cn.nukkit.scheduler.TaskHandler;
 import pl.vertty.arivi.Main;
 import pl.vertty.arivi.enums.GroupType;
 import pl.vertty.arivi.enums.TimerCallback;
+import pl.vertty.arivi.inventory.InventoryCategory;
+import pl.vertty.arivi.inventory.InventoryMenu;
+import pl.vertty.arivi.inventory.InventoryMenuHandler;
 import pl.vertty.arivi.objects.Combat;
 import pl.vertty.arivi.objects.User;
 import pl.vertty.arivi.objects.guild.Guild;
@@ -24,19 +27,31 @@ public class TimerUtil
         final Combat combat = CombatManager.getCombat(p);
         final User u = UserManager.getUser(p);
         if (u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             p.teleport(location);
             return;
         }
         if (combat != null && combat.hasFight() && !u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             ChatUtil.sendMessage((CommandSender)p, "&cTeleportacja przerwana!");
             return;
         }
         final Guild g = GuildManager.getGuild(p.getLocation());
         if (g != null && !g.isMember(p) && !u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             ChatUtil.sendMessage((CommandSender)p, "&cTeleportacja przerwana!");
             return;
         }
         if (!u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             ChatUtil.sendMessage((CommandSender)p, "&7Teleportacja nastapi za &e" + delay + " sekund");
         }
         final TaskHandler task = Server.getInstance().getScheduler().scheduleDelayedRepeatingTask((Plugin)Main.getPlugin(), (Runnable)new Runnable() {
@@ -45,10 +60,16 @@ public class TimerUtil
             @Override
             public void run() {
                 if (u.getOchrona() != 0L) {
+                    if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                        InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                    }
                     ChatUtil.sendActionBar(p, "&7Teleport nastapi za: &e" + this.time + " &8:|: &7Ochrona: &e" + (DataUtil.secondsToString(u.getOchrona()).isEmpty() ? "1s" : DataUtil.secondsToString(u.getOchrona())));
                     --this.time;
                 }
                 else {
+                    if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                        InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                    }
                     ChatUtil.sendActionBar(p, "&7Teleport nastapi za: &e" + this.time);
                     --this.time;
                 }
@@ -59,6 +80,9 @@ public class TimerUtil
             public void success(final Player player) {
                 player.teleport(location);
                 task.cancel();
+                if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                    InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                }
                 ChatUtil.sendMessage((CommandSender)player, "&aPrzeteleportowano!");
                 u.setTeleport(false);
             }
@@ -66,6 +90,9 @@ public class TimerUtil
             @Override
             public void error(final Player player) {
                 task.cancel();
+                if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                    InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                }
                 ChatUtil.sendMessage((CommandSender)player, "&cTeleportacja przerwana!");
                 u.setTeleport(false);
             }
@@ -76,10 +103,16 @@ public class TimerUtil
         final Combat combat = CombatManager.getCombat(p);
         final User u = UserManager.getUser(p);
         if (u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             p.teleport(location);
             return;
         }
         if (combat != null && combat.hasFight() && !u.can(GroupType.MODERATOR)) {
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+            }
             ChatUtil.sendMessage((CommandSender)p, "&cTeleportacja przerwana!");
             return;
         }
@@ -87,6 +120,9 @@ public class TimerUtil
             final Guild g = GuildManager.getGuild(p.getLocation());
             if (!u.can(GroupType.MODERATOR) && g != null && !g.isMember(p)) {
                 delay = 60;
+            }
+            if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
             }
             ChatUtil.sendMessage((CommandSender)p, "&7Teleportacja nastapi za &e" + delay + " sekund");
         }
@@ -99,10 +135,16 @@ public class TimerUtil
                     return;
                 }
                 if (u.getOchrona() != 0L) {
+                    if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                        InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                    }
                     ChatUtil.sendActionBar(p, "&7Teleport nastapi za: &e" + this.time + " &8:|: &7Ochrona: &e" + (DataUtil.secondsToString(u.getOchrona()).isEmpty() ? "1s" : DataUtil.secondsToString(u.getOchrona())));
                     --this.time;
                 }
                 else {
+                    if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                        InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                    }
                     ChatUtil.sendActionBar(p, "&7Teleport nastapi za: &e" + this.time);
                     --this.time;
                 }
@@ -113,6 +155,9 @@ public class TimerUtil
             public void success(final Player player) {
                 player.teleport(location);
                 task.cancel();
+                if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                    InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                }
                 ChatUtil.sendMessage(player, "&aPrzeteleportowano!");
                 u.setTeleport(false);
             }
@@ -120,6 +165,9 @@ public class TimerUtil
             @Override
             public void error(final Player player) {
                 task.cancel();
+                if(InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()) != null){
+                    InventoryMenuHandler.getMenuByPlayer(p.getUniqueId()).forceDestroy(p);
+                }
                 ChatUtil.sendMessage(player, "&cTeleportacja przerwana!");
                 u.setTeleport(false);
             }

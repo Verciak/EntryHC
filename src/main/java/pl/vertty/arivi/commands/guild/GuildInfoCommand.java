@@ -3,6 +3,8 @@ package pl.vertty.arivi.commands.guild;
 
 import java.util.Set;
 import java.util.Iterator;
+
+import pl.vertty.arivi.managers.TablistManager;
 import pl.vertty.arivi.objects.guild.Guild;
 import org.apache.commons.lang3.StringUtils;
 import pl.vertty.arivi.utils.guild.DataUtil;

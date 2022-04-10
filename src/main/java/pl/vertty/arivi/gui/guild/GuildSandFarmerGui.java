@@ -40,7 +40,7 @@ public class GuildSandFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(20, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
@@ -55,7 +55,7 @@ public class GuildSandFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(29, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
@@ -70,7 +70,7 @@ public class GuildSandFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(15, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 1 kratke", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -85,7 +85,7 @@ public class GuildSandFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(24, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -100,7 +100,7 @@ public class GuildSandFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(33, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -115,7 +115,7 @@ public class GuildSandFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildSandFarmerGui.openTopki(p0);
             }
         });
         category.addElement(31, new ItemData(Item.END_CRYSTAL, 0, 1, "&r&9Rozpocznij tworzenie &fSandFarmera", new String[]{"", "&r&8>> &cSandFarmer tworzy sie na &4Y:70","&r&8>> &aKliknij, aby rozpoczac!"}), new ItemClick() {
@@ -131,7 +131,7 @@ public class GuildSandFarmerGui
 
             }
         });
-        category.addElement(13, new ItemData(Item.BOOK, 0, 1, "&r&9Informacje", new String[]{"", "&r&8>> &7Twoj rozmiar gildii: &9" + g.getRegion().getSize(), "&r&8>> &7Aktualna ilosc kratek od srodka: &9" + user.kratki, "", "&r&8>> &7Koszt stworzenia &fBoyFarmera&7:&9 " +(g.getRegion().getSize() * user.kratki / 2), "&r&8>> &7Aktualnie emeraldow w skrabcu:&9 " +g.getSkarbiec()}));
+        category.addElement(13, new ItemData(Item.BOOK, 0, 1, "&r&9Informacje", new String[]{"", "&r&8>> &7Twoj rozmiar gildii: &9" + g.getRegion().getSize(), "&r&8>> &7Aktualna ilosc kratek od srodka: &9" + user.kratki, "", "&r&8>> &7Koszt stworzenia &fSandFarmera&7:&9 " +(g.getRegion().getSize() * user.kratki / 2), "&r&8>> &7Aktualnie emeraldow w skrabcu:&9 " +g.getSkarbiec()}));
 
         category.addElement(49, ItemData.fromItem(new Item(ItemID.NETHER_STAR).setCustomName(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&r&9Wroc")).setLore(pl.vertty.arivi.utils.guild.ChatUtil.fixColor("&r&8» &7Kliknij aby wrocic!"))), new ItemClick() {
             @Override

@@ -146,9 +146,11 @@ public class PlayerDeathListener implements Listener {
                             remove = 150;
                         }
                         if (kg != null) {
+                            kg.addPoints(25);
                             kg.setKills(kg.getKills() + 1);
                         }
                         if (g != null) {
+                            g.removePoints(15);
                             g.setDeaths(g.getDeaths() + 1);
                         }
                         user.setDeaths(user.getDeaths() + 1);
@@ -157,11 +159,11 @@ public class PlayerDeathListener implements Listener {
                         kuser.setPoints(kuser.getPoints() + add);
 
 
-                        BackupManager.createBackup(p.getName(), k.getName(), p.getPing(), p.getInventory(), remove);
+//                        BackupManager.createBackup(p.getName(), k.getName(), p.getPing(), p.getInventory(), remove);
                         p.getInventory().clearAll();
                         p.getCursorInventory().clearAll();
                         p.setExperience(0, 0);
-                        e.getEntity().teleport(Server.getInstance().getDefaultLevel().getSpawnLocation());
+                        p.teleport(Server.getInstance().getDefaultLevel().getSpawnLocation());
                         e.setCancelled(true);
                         if (kuser != null) {
                             kuser.getPlayer().addEffect(Effect.getEffect(12).setDuration(200).setAmplifier(0).setVisible(true));

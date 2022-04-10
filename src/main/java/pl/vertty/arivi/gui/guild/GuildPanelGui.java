@@ -51,7 +51,6 @@ public class GuildPanelGui
                     menu.forceDestroy(player);
                     return;
                 }
-                menu.forceDestroy(player);
                 GuildKopaczFarmerGui.openTopki(player);
             }
         });
@@ -63,7 +62,6 @@ public class GuildPanelGui
                     menu.forceDestroy(player);
                     return;
                 }
-                menu.forceDestroy(player);
                 GuildSandFarmerGui.openTopki(player);
             }
         });
