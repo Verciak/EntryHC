@@ -42,7 +42,7 @@ public class SprawdzCommand extends Command
         Server.getInstance().broadcastMessage(ChatUtil.fixColor("&7Gracz &9{USER}&7 jest sprawdzany przez: &9{ADMIN}!\n&8>> &7Powod: &9{REASON}").replace("{USER}", tar.getName()).replace("{ADMIN}", p.getName()).replace("{REASON}", reason.toString()));
         SprawdzManager.create(tar, p, reason.toString());
         ChatUtil.sendMessage(tar, SprawdzManager.chat);
-        tar.teleport(new Location(-48, 74.0, 1.0));
+        tar.teleport(new Location(0, 64.0, 15.0));
         return false;
     }
 }

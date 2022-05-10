@@ -114,7 +114,7 @@ public class WingsManager
         outputGraphics2D.dispose();
 
         Graphics wingsGraphics = customizeBufferedImage.getGraphics();
-        wingsGraphics.drawImage(ImageIO.read(new File(Main.getPlugin().getDataFolder() + "/wings/" + wings.getName() + "/" + wings.getName() + ".png")), 0, 0, null);
+        wingsGraphics.drawImage(ImageIO.read(new File(Main.getPlugin().getDataFolder() + "/wings/" + wings.getName() + "/skin.png")), 0, 0, null);
         wingsGraphics.dispose();
 
         producedSkin.setSkinData(customizeBufferedImage);

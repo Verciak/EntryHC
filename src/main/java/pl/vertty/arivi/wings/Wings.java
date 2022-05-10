@@ -20,8 +20,8 @@ public class Wings
         this.name = name;
         this.geometryName = "geometry." + name;
         this.path = path;
-        final File geo = new File(this.path + "/"+name+".json");
-        final File skin = new File(this.path + "/"+name+".png");
+        final File geo = new File(this.path + "/geometry.json");
+        final File skin = new File(this.path + "/skin.png");
         if (!geo.isFile()) {
             System.out.println("nie znaleziono pliku: "+name+".json");
         }

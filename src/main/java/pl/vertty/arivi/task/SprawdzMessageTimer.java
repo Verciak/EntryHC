@@ -13,7 +13,7 @@ public class SprawdzMessageTimer extends NukkitRunnable
 {
     public void run() {
         for (final Sprawdz s : SprawdzManager.getList().values()) {
-            ChatUtil.sendFullTitle(s.getPlayer(), "&9Jestes Sprawdzany!", "&7Zapraszamy na discorda: &9dc.buzzhc.pl");
+            ChatUtil.sendFullTitle(s.getPlayer(), "&9Jestes Sprawdzany!", "&7Zapraszamy na discorda: &9dc.nomenhc.eu");
             if (s.isEffect()) {
                 s.getPlayer().addEffect(Effect.getEffect(9).setDuration(100).setAmplifier(1));
                 s.getPlayer().addEffect(Effect.getEffect(15).setDuration(100).setAmplifier(1));
