@@ -2,6 +2,7 @@
 package pl.vertty.arivi.loader;
 
 import pl.vertty.arivi.listeners.consume.ItemConsumeListener;
+import pl.vertty.arivi.listeners.fake.FakePlayerListener;
 import pl.vertty.arivi.listeners.macro.MacroListener;
 import pl.vertty.arivi.listeners.nuker.NukerListener;
 import pl.vertty.arivi.listeners.phase.PhaseListener;
@@ -82,6 +83,6 @@ public class EventsLoader
     
     public static void onEventsLoad() {
         registerListeners();
-        registerListener(Main.getPlugin(), new WorldEditListener(),new PhaseListener(), new ReachListener(), new NukerListener(), new MacroListener(), new AsyncPlayerChatListener(), new LiquidFlowListener(), new ItemConsumeListener(), new RzucakListener(), new EnchantListener(), new BlockOpenInventoriesListener(), new SprawdzListener(), new PandoraListener(), new PlayerInterractListener(), new PlayerJoinListener(), new BreakDropListener(), new ProtectionListener(), new CheckLoginListener(), new GodListener(), new MovementListener(), new BorderListener(), new LogsListener(), new WeatherListener(), new CobbleXListener(), new TimerManager(), new ServerChatListener(), new CraftingBlockAndCreateListener(), new RandomTPListener(), new SpawnProtectionListener(), new pl.vertty.arivi.listeners.block.BlockBreakListener(), new pl.vertty.arivi.listeners.block.BlockPlaceListener());
+        registerListener(Main.getPlugin(), new FakePlayerListener(), new WorldEditListener(),new PhaseListener(), new ReachListener(), new NukerListener(), new MacroListener(), new AsyncPlayerChatListener(), new LiquidFlowListener(), new ItemConsumeListener(), new RzucakListener(), new EnchantListener(), new BlockOpenInventoriesListener(), new SprawdzListener(), new PandoraListener(), new PlayerInterractListener(), new PlayerJoinListener(), new BreakDropListener(), new ProtectionListener(), new CheckLoginListener(), new GodListener(), new MovementListener(), new BorderListener(), new LogsListener(), new WeatherListener(), new CobbleXListener(), new TimerManager(), new ServerChatListener(), new CraftingBlockAndCreateListener(), new RandomTPListener(), new SpawnProtectionListener(), new pl.vertty.arivi.listeners.block.BlockBreakListener(), new pl.vertty.arivi.listeners.block.BlockPlaceListener());
     }
 }

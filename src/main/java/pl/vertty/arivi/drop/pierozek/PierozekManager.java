@@ -34,7 +34,19 @@ public class PierozekManager
         }
         final Item win = Item.get(pandoreItemm.getId(), pandoreItemm.getDamage(), pandoreItemm.getCount());
         if (pandoreItemm.hasEnchantments()) {
-            win.addEnchantment(pandoreItemm.getEnchantments());
+            for (Enchantment enchantment : pandoreItemm.getEnchantments()){
+                win.addEnchantment(enchantment.setLevel(enchantment.getLevel(), false));
+            }
+        }
+        if (pandoreItemm.getCustomName().contains(ChatUtil.fixColor("Beacon"))) {
+            Server.getInstance().broadcastMessage(ChatUtil.fixColor("&7Gracz: &f{PLAYER} &7wydropil: &e{NAME} &7z &5Pandory!").replace("{PLAYER}", player.getName()).replace("{NAME}", pandoreItemm.getName()));
+        }
+        if (pandoreItemm.getCustomName().contains(ChatUtil.fixColor("Kilof 6/3/3"))) {
+            Server.getInstance().broadcastMessage(ChatUtil.fixColor("&7Gracz: &f{PLAYER} &7wydropil: &e{NAME} &7z &5Pandory!").replace("{PLAYER}", player.getName()).replace("{NAME}", pandoreItemm.getName()));
+            win.setCustomName(ChatUtil.fixColor("&r&4&lKilof 6/3/3"));
+            win.addEnchantment(Enchantment.get(15).setLevel(6, false));
+            win.addEnchantment(Enchantment.get(18).setLevel(3, false));
+            win.addEnchantment(Enchantment.get(17).setLevel(3, false));
         }
         final PlayerInventory inventoryAutoAdd = event.getPlayer().getInventory();
         final Item[] itemsToAdd = { win };
@@ -55,35 +67,29 @@ public class PierozekManager
             itemInHand.setCount(itemInHand.getCount() - 1);
             event.getPlayer().getInventory().setItemInHand(itemInHand);
         }
-        if (pandoreItemm.getCustomName().contains(ChatUtil.fixColor("Beacon"))) {
-            Server.getInstance().broadcastMessage(ChatUtil.fixColor("&7Gracz: &f{PLAYER} &7wydropil: &e{NAME} &7z &5Pandory!").replace("{PLAYER}", player.getName()).replace("{NAME}", pandoreItemm.getName()));
-        }
-        if (pandoreItemm.getCustomName().contains(ChatUtil.fixColor("Kilof 6/3/3"))) {
-            Server.getInstance().broadcastMessage(ChatUtil.fixColor("&7Gracz: &f{PLAYER} &7wydropil: &e{NAME} &7z &5Pandory!").replace("{PLAYER}", player.getName()).replace("{NAME}", pandoreItemm.getName()));
-        }
     }
     
     static {
         PierozekManager.drop = new ArrayList<>();
         final Item helm = new Item(306, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazny Helm 3/2"));
-        helm.addEnchantment(Enchantment.get(0).setLevel(4, true));
-        helm.addEnchantment(Enchantment.get(17).setLevel(2, true));
+        helm.addEnchantment(Enchantment.get(0).setLevel(4, false));
+        helm.addEnchantment(Enchantment.get(17).setLevel(2, false));
         final Item klata = new Item(307, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazna Klata 3/2"));
-        klata.addEnchantment(Enchantment.get(0).setLevel(4, true));
-        klata.addEnchantment(Enchantment.get(17).setLevel(2, true));
+        klata.addEnchantment(Enchantment.get(0).setLevel(4, false));
+        klata.addEnchantment(Enchantment.get(17).setLevel(2, false));
         final Item spodnie = new Item(308, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazne Spodnie 3/2"));
-        spodnie.addEnchantment(Enchantment.get(0).setLevel(4, true));
-        spodnie.addEnchantment(Enchantment.get(17).setLevel(2, true));
+        spodnie.addEnchantment(Enchantment.get(0).setLevel(4, false));
+        spodnie.addEnchantment(Enchantment.get(17).setLevel(2, false));
         final Item buty = new Item(309, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazne Buty 3/2"));
-        buty.addEnchantment(Enchantment.get(0).setLevel(4, true));
-        buty.addEnchantment(Enchantment.get(17).setLevel(2, true));
+        buty.addEnchantment(Enchantment.get(0).setLevel(4, false));
+        buty.addEnchantment(Enchantment.get(17).setLevel(2, false));
         final Item miecz = new Item(267, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazny Miecz 3/2/3"));
-        miecz.addEnchantment(Enchantment.get(9).setLevel(3, true));
-        miecz.addEnchantment(Enchantment.get(13).setLevel(2, true));
-        miecz.addEnchantment(Enchantment.get(17).setLevel(3, true));
+        miecz.addEnchantment(Enchantment.get(9).setLevel(3, false));
+        miecz.addEnchantment(Enchantment.get(13).setLevel(2, false));
+        miecz.addEnchantment(Enchantment.get(17).setLevel(3, false));
         final Item knock = new Item(267, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Zelazny Miecz 2/3"));
-        knock.addEnchantment(Enchantment.get(12).setLevel(2, true));
-        knock.addEnchantment(Enchantment.get(17).setLevel(3, true));
+        knock.addEnchantment(Enchantment.get(12).setLevel(2, false));
+        knock.addEnchantment(Enchantment.get(17).setLevel(3, false));
         PierozekManager.drop.add(helm);
         PierozekManager.drop.add(klata);
         PierozekManager.drop.add(spodnie);
@@ -97,9 +103,9 @@ public class PierozekManager
         PierozekManager.drop.add(new Item(46, 0, 64).setCustomName(ChatUtil.fixColor("&r&9TNT")));
         PierozekManager.drop.add(new Item(46, 0, 32).setCustomName(ChatUtil.fixColor("&r&9TNT")));
         final Item kilof533 = new Item(278, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Kilof 5/3/3"));
-        kilof533.addEnchantment(Enchantment.get(15).setLevel(5, true));
-        kilof533.addEnchantment(Enchantment.get(18).setLevel(3, true));
-        kilof533.addEnchantment(Enchantment.get(17).setLevel(3, true));
+        kilof533.addEnchantment(Enchantment.get(15).setLevel(5, false));
+        kilof533.addEnchantment(Enchantment.get(18).setLevel(3, false));
+        kilof533.addEnchantment(Enchantment.get(17).setLevel(3, false));
         PierozekManager.drop.add(kilof533);
         PierozekManager.drop.add(new Item(266, 0, 32).setCustomName(ChatUtil.fixColor("&r&9Sztabka Zlota")));
         PierozekManager.drop.add(new Item(266, 0, 16).setCustomName(ChatUtil.fixColor("&r&9Sztabka Zlota")));
@@ -112,10 +118,11 @@ public class PierozekManager
         PierozekManager.drop.add(new Item(3, 0, 64).setCustomName(ChatUtil.fixColor("&r&9Dirt")));
         PierozekManager.drop.add(new Item(145, 0, 3).setCustomName(ChatUtil.fixColor("&r&9Kowadlo")));
         PierozekManager.drop.add(new Item(145, 0, 6).setCustomName(ChatUtil.fixColor("&r&9Kowadlo")));
-        final Item kilof633 = new Item(278, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Kilof 6/3/3"));
+        final Item kilof633 = new Item(278, 0, 1).setCustomName(ChatUtil.fixColor("&r&4&lKilof 6/3/3"));
+        kilof633.setLore(new String[]{ChatUtil.fixColor("&r&8&l>> &c&lKILOF NIE POSIADA ENCHANTU, ABY ZAPOBIEC BUGOWANIU"), "", ChatUtil.fixColor("&r&8&l>> &4PO WYDROPIENU KILOF BEDZIE POSIADAL JUZ ENCHANT!")});
         kilof633.addEnchantment(Enchantment.get(15).setLevel(6, false));
-        kilof633.addEnchantment(Enchantment.get(18).setLevel(3, true));
-        kilof633.addEnchantment(Enchantment.get(17).setLevel(3, true));
+        kilof633.addEnchantment(Enchantment.get(18).setLevel(3, false));
+        kilof633.addEnchantment(Enchantment.get(17).setLevel(3, false));
         PierozekManager.drop.add(kilof633);
         PierozekManager.drop.add(new Item(Item.BEACON, 0, 1).setCustomName(ChatUtil.fixColor("&r&9Beacon")));
         (PierozekManager.pandoreItem = Item.get(122)).setCustomName(ChatUtil.fixColor("&r&5&lPandora"));

@@ -1,5 +1,6 @@
 package pl.vertty.arivi.commands.root;
 
+import cn.nukkit.item.Item;
 import pl.vertty.arivi.drop.base.utils.UserUtils;
 import pl.vertty.arivi.drop.utils.TimeUtils;
 import pl.vertty.arivi.enums.GroupType;
@@ -14,17 +15,21 @@ import pl.vertty.arivi.managers.ItemShopManager;
 import pl.vertty.arivi.objects.Ban;
 import pl.vertty.arivi.utils.ChatUtil;
 import cn.nukkit.Player;
+import pl.vertty.arivi.wings.Wings;
+import pl.vertty.arivi.wings.WingsManager;
+
+import java.io.IOException;
 
 public class aItemShopCommand extends Command
 {
     public aItemShopCommand() {
-        super("aitemshop", "Odbierz uslugi premium", "<gracz> <vip/svip/sponsor/pandora> <ilosc>", GroupType.ROOT, new String[] { "ais" });
+        super("aitemshop", "Odbierz uslugi premium", "<gracz> <vip/svip/sponsor/pandora/wings/sejf> <ilosc>", GroupType.ROOT, new String[] { "ais" });
     }
     
     @Override
     public boolean onExecute(final CommandSender p, final String[] args) {
         if (args.length < 3) {
-            ChatUtil.sendMessage(p, "/aitemshop <gracz> <vip/svip/sponsor/pandora> <ilosc>");
+            ChatUtil.sendMessage(p, "/aitemshop <gracz> <vip/svip/sponsor/pandora/wings/sejf> <ilosc>");
             return false;
         }
         if (!ChatUtil.isInteger(args[2])) {
@@ -126,6 +131,29 @@ public class aItemShopCommand extends Command
             ChatUtil.sendMessage(p, "&7Gracz: " + args[0] + " otrzymal range SPONSOR");
             return false;
         }
+        if (args[1].equalsIgnoreCase("wings")) {
+            for (final Player player2 : Server.getInstance().getOnlinePlayers().values()) {
+                ChatUtil.sendTitle(player2, "&9ITEMSHOP", "&7Gracz: &9" + args[0] + " &7kupil &9SKRZYDLA", 30, 60, 30);
+            }
+
+            try {
+                WingsManager.setRatWings(Server.getInstance().getPlayer(args[0]), WingsManager.getWings("fame"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ChatUtil.sendMessage(p, "&7Gracz: " + args[0] + " otrzymal skrzydla");
+            return false;
+        }
+        if (args[1].equalsIgnoreCase("sejf")) {
+            for (final Player player2 : Server.getInstance().getOnlinePlayers().values()) {
+                ChatUtil.sendTitle(player2, "&9ITEMSHOP", "&7Gracz: &9" + args[0] + " &7kupil &9SEJF", 30, 60, 30);
+            }
+            Player p2 = Server.getInstance().getPlayer(args[0]);
+            Item item = Item.get(Item.SHULKER_BOX, 0, 1);
+            p2.getInventory().addItem(item);
+            ChatUtil.sendMessage(p, "&7Gracz: " + args[0] + " otrzymal sejf");
+            return false;
+        }
 
 
         if (args[1].equalsIgnoreCase("turboexp30")) {
@@ -158,7 +186,7 @@ public class aItemShopCommand extends Command
             ChatUtil.sendMessage(p, "&7Gracz: " + args[0] + " otrzymal TurboDROP");
             return false;
         }
-        ChatUtil.sendMessage(p, "/aitemshop <gracz> <pandora/vip/svip/sponsor> <ilosc>");
+        ChatUtil.sendMessage(p, "/aitemshop <gracz> <pandora/vip/svip/sponsor/wings/sejf> <ilosc>");
         return false;
     }
 }

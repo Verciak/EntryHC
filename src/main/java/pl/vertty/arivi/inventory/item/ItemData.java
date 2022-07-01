@@ -70,7 +70,7 @@ public class ItemData
     }
     
     public Item build() {
-        final Item item = Item.get(this.id, Integer.valueOf(this.damage), this.count);
+        final Item item = Item.get(this.id, this.damage, this.count);
         if (!this.customName.equals("Name")) {
             item.setCustomName(ChatUtil.fixColor(this.customName));
         }
@@ -78,7 +78,10 @@ public class ItemData
             item.setLore(this.lores);
         }
         if (this.enchantment.length > 0) {
-            item.addEnchantment(this.enchantment);
+            for (final Enchantment enchantment : this.enchantment) {
+                item.addEnchantment(Enchantment.get(enchantment.getId()).setLevel(enchantment.getLevel(), false));
+            }
+//            item.addEnchantment(this.enchantment);
         }
         return item;
     }

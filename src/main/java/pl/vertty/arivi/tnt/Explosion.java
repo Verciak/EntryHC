@@ -158,7 +158,7 @@ public class Explosion
         final double maxY = NukkitMath.ceilDouble(this.source.y + explosionSize + 1.0);
         final double minZ = NukkitMath.floorDouble(this.source.z - explosionSize - 1.0);
         final double maxZ = NukkitMath.ceilDouble(this.source.z + explosionSize + 1.0);
-        final AxisAlignedBB explosionBB = (AxisAlignedBB)new SimpleAxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ);
+        final AxisAlignedBB explosionBB = (AxisAlignedBB)new AxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ);
         final Entity[] list;
         final Entity[] nearbyEntities;
         final Entity[] array3;

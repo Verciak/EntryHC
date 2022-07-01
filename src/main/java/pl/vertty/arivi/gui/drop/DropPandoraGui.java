@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
+import cn.nukkit.item.enchantment.Enchantment;
 import pl.vertty.arivi.Main;
 import pl.vertty.arivi.drop.pierozek.PierozekManager;
 import pl.vertty.arivi.inventory.InventoryCategory;

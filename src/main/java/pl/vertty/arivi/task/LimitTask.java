@@ -85,48 +85,36 @@ public class LimitTask extends NukkitRunnable
                 Item item = new Item(Item.TNT, 0, toRemove);
                 item.setCustomName(ChatUtil.fixColor("&9RZUCANETNT"));
                 p.getInventory().removeItem(item);
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + tntSize + " &7rzucakow");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.tnt") + " &7rzucakow");
                 ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
             if (arrSize > LimitTask.c.getInt("limit.arrow")) {
                 final int toRemove = arrSize - LimitTask.c.getInt("limit.arrow");
                 u.addArrow(u.getArrow() + toRemove);
                 p.getInventory().removeItem(new Item(Item.ARROW, 0, toRemove));
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + arrSize + " &7strzal");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.arrow") + " &7strzal");
                 ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
             if (sSize > LimitTask.c.getInt("limit.sniezki")) {
                 final int toRemove = sSize - LimitTask.c.getInt("limit.sniezki");
                 u.addSniezki(u.getSniezki() + toRemove);
                 p.getInventory().removeItem(new Item(Item.SNOWBALL, 0, toRemove));
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + sSize + " &7sniezek");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.sniezki") + " &7sniezek");
-                ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
+               ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
             if (perSize > LimitTask.c.getInt("limit.perly")) {
                 final int toRemove = perSize - LimitTask.c.getInt("limit.perly");
                 u.addPerly(u.getPerly() + toRemove);
                 p.getInventory().removeItem(new Item(368, 0, toRemove));
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + perSize + " &7perel");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.perly") + " &7perel");
                 ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
             if (koxSize > LimitTask.c.getInt("limit.kox")) {
                 final int toRemove = koxSize - LimitTask.c.getInt("limit.kox");
                 u.addKox(u.getKox() + toRemove);
                 p.getInventory().removeItem(new Item(466, 0, toRemove));
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + koxSize + " &7koxow");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.kox") + " &7koxow");
                 ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
             if (refSize > LimitTask.c.getInt("limit.refy")) {
                 final int toRemove = refSize - LimitTask.c.getInt("limit.refy");
                 u.addRefy(u.getRefy() + toRemove);
                 p.getInventory().removeItem(new Item(322, 0, toRemove));
-                ChatUtil.sendMessage(p, "&7Miales przy sobie &e" + refSize + " &7refili");
-                ChatUtil.sendMessage(p, "&7Limit to &e" + LimitTask.c.getInt("limit.refy") + " &7refili");
                 ChatUtil.sendMessage(p, "&7Przedmioty zostaly przeniesione do schowka &e/schowek&7!");
             }
         }

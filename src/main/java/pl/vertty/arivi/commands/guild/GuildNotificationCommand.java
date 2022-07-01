@@ -2,7 +2,7 @@
 package pl.vertty.arivi.commands.guild;
 
 import java.io.IOException;
-import pl.vertty.arivi.utils.WebhookUtil;
+
 import org.apache.commons.lang3.StringUtils;
 import pl.vertty.arivi.managers.guild.GuildManager;
 import pl.vertty.arivi.utils.guild.ChatUtil;
@@ -28,12 +28,6 @@ public class GuildNotificationCommand extends PlayerCommand
             return false;
         }
         final String join = StringUtils.join((Object[])array, " ", 2, array.length);
-        try {
-            WebhookUtil.sendMessage(player.getName(), array[1], join);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
         player.sendMessage(ChatUtil.fixColor(Config.GUILD_COMMAND_ZGLOS_SUCCESS));
         return false;
     }

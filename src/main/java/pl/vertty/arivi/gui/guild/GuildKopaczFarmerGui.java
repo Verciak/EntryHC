@@ -41,7 +41,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(20, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
@@ -56,7 +56,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(29, new ItemData(Item.WOOL, DyeColor.LIME.getWoolData(), 1, "&r&9Dodaj 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby dodac kratki!"}), new ItemClick() {
@@ -71,7 +71,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki >= g.getRegion().getSize()){
                     user.kratki = g.getRegion().getSize();
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(15, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 1 kratke", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -86,7 +86,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(24, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 2 kratki", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -101,7 +101,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(33, new ItemData(Item.WOOL, DyeColor.RED.getWoolData(), 1, "&r&9Odejmij 5 kratek", new String[]{"", "&r&8>> &7Kliknij, aby odjac kratki!"}), new ItemClick() {
@@ -116,7 +116,7 @@ public class GuildKopaczFarmerGui
                 if(user.kratki <= 5){
                     user.kratki = 5;
                 }
-                GuildBoyFarmerGui.openTopki(p0);
+                GuildKopaczFarmerGui.openTopki(p0);
             }
         });
         category.addElement(31, new ItemData(Item.END_CRYSTAL, 0, 1, "&r&9Rozpocznij tworzenie &fKopacza", new String[]{"","&r&8>> &aKliknij, aby rozpoczac!"}), new ItemClick() {

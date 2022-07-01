@@ -334,13 +334,11 @@ public class Config
         Config.GUILD_TNT_MESSAGE = "&cNa terenie gildi wybuchlo tnt, Budowac mozesz dopiero za {X}";
         Config.GUILD_COMMAND_TELEPORT_SUCCESS = "&7Ustawiles &9teleport &7gildyjny na kordynatach X: &9{X} &7Y: &9{Y} &7Z: &9{Z}";
         Config.GUILD_UPRAWNIENIA_SUCCESS = "&7Nadales role &9{ROLE} &7graczowi &9{NICK}";
-        Config.COST_CREATE_NORMAL = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;";
-        Config.COST_CREATE_VIP = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;";
-        Config.COST_CREATE_SVIP = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;";
 
-//        Config.COST_CREATE_NORMAL = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;266:0-64:Sztabki zlota;388:0-64:Emeraldy;263:0-64:Wegiel;466:0-1:Kox;322:0-8:Refile;368:0-3:Perly;47:0-32:Biblioteczki;3:0-64:Dirt;49:0-64:Obsydian;145:0-8:Kowadla;";
-//        Config.COST_CREATE_VIP = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;266:0-64:Sztabki zlota;388:0-64:Emeraldy;263:0-64:Wegiel;466:0-1:Kox;322:0-8:Refile;368:0-3:Perly;47:0-32:Biblioteczki;3:0-64:Dirt;49:0-64:Obsydian;145:0-8:Kowadla;";
-//        Config.COST_CREATE_SVIP = "264:0-64:Diamenty;265:0-64:Sztabki zelaza;266:0-64:Sztabki zlota;388:0-64:Emeraldy;263:0-64:Wegiel;466:0-1:Kox;322:0-8:Refile;368:0-3:Perly;47:0-32:Biblioteczki;3:0-64:Dirt;49:0-64:Obsydian;145:0-8:Kowadla;";
+
+        Config.COST_CREATE_NORMAL = "264:0-32:Diamenty;265:0-32:Sztabki zelaza;266:0-32:Sztabki zlota;388:0-32:Emeraldy;263:0-32:Wegiel;322:0-3:Refile;368:0-3:Perly;47:0-32:Biblioteczki;3:0-32:Dirt;49:0-32:Obsydian;145:0-16:Kowadla;";
+        Config.COST_CREATE_VIP = "264:0-16:Diamenty;265:0-16:Sztabki zelaza;266:0-16:Sztabki zlota;388:0-16:Emeraldy;263:0-16:Wegiel;322:0-2:Refile;368:0-2:Perly;47:0-16:Biblioteczki;3:0-16:Dirt;49:0-16:Obsydian;145:0-12:Kowadla;";
+        Config.COST_CREATE_SVIP = "264:0-8:Diamenty;265:0-8:Sztabki zelaza;266:0-8:Sztabki zlota;388:0-8:Emeraldy;263:0-8:Wegiel;322:0-1:Refile;368:0-1:Perly;47:0-8:Biblioteczki;3:0-8:Dirt;49:0-8:Obsydian;145:0-8:Kowadla;";
 
 
 

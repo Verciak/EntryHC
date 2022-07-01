@@ -82,7 +82,7 @@ public class RandomTPListener implements Listener
         final Block block = e.getBlock();
         final Block i = e.getBlock();
         User u = UserManager.getUser(e.getPlayer());
-        if (e.getAction() == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && block.getId() == 25 && i.getLocation().getFloorX() <= 65 && i.getLocation().getFloorX() >= -65 && i.getLocation().getFloorZ() <= 65 && i.getLocation().getFloorZ() >= -65) {
+        if (e.getAction() == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && block.getId() == 25 && i.getLocation().getFloorX() <= 105 && i.getLocation().getFloorX() >= -105 && i.getLocation().getFloorZ() <= 105 && i.getLocation().getFloorZ() >= -105) {
             if (this.getPlayersInRadius(block, e.getBlock().getLocation(), 3).size() < 2) {
                 ChatUtil.sendTitle(e.getPlayer(), "", "&cPoczekaj na innych graczy aby sie teleportowac");
                 return;
@@ -102,7 +102,7 @@ public class RandomTPListener implements Listener
                 players.teleport(p.getLocation());
             }
         }
-        if (e.getAction() == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && block.getId() == 84 && i.getLocation().getFloorX() <= 65 && i.getLocation().getFloorX() >= -65 && i.getLocation().getFloorZ() <= 65 && i.getLocation().getFloorZ() >= -65) {
+        if (e.getAction() == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && block.getId() == 84 && i.getLocation().getFloorX() <= 105 && i.getLocation().getFloorX() >= -105 && i.getLocation().getFloorZ() <= 105 && i.getLocation().getFloorZ() >= -105) {
             if (this.getPlayersInRadius(block, e.getBlock().getLocation(), 3).size() < 2) {
                 ChatUtil.sendTitle(e.getPlayer(), "", "&cPoczekaj na innych graczy aby sie teleportowac");
                 return;
@@ -131,7 +131,7 @@ public class RandomTPListener implements Listener
         final Player p = event.getPlayer();
         final Block clicked = event.getBlock();
         final Block i = event.getBlock();
-        if (i.getLocation().getFloorX() <= 65 && i.getLocation().getFloorX() >= -65 && i.getLocation().getFloorZ() <= 65 && i.getLocation().getFloorZ() >= -65) {
+        if (i.getLocation().getFloorX() <= 105 && i.getLocation().getFloorX() >= -105 && i.getLocation().getFloorZ() <= 105 && i.getLocation().getFloorZ() >= -105) {
             if (clicked.getId() != 19) {
                 return;
             }

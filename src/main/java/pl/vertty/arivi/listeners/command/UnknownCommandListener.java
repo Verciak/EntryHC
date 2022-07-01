@@ -31,6 +31,11 @@ public class UnknownCommandListener implements Listener
         Guild g = GuildManager.getGuild(p.getLocation());
         Combat combat = CombatManager.getCombat(p);
         if (!UserManager.getUser(p).can(GroupType.HELPER) && combat != null && combat.hasFight())
+                if (pcmd.toLowerCase().contains("/list")) {
+                    e.setCancelled(true);
+                    return;
+                }
+
             for (String cmd : Main.getPlugin().getConfig().getStringList("config.blocked.cmd.incombat")) {
                 if (pcmd.toLowerCase().contains("/" + cmd)) {
                     e.setCancelled(true);

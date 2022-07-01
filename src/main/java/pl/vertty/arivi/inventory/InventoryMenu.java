@@ -3,6 +3,7 @@ package pl.vertty.arivi.inventory;
 
 import java.util.Iterator;
 
+import cn.nukkit.block.BlockID;
 import pl.vertty.arivi.MainConstants;
 import pl.vertty.arivi.inventory.item.ItemData;
 import java.util.Map;
@@ -111,7 +112,7 @@ public class InventoryMenu
         pk1.x = (int)pos.x;
         pk1.y = (int)pos.y;
         pk1.z = (int)pos.z;
-        pk1.blockRuntimeId = GlobalBlockPalette.getOrCreateRuntimeId(54, 0);
+        pk1.blockRuntimeId = GlobalBlockPalette.getOrCreateRuntimeId(pk1.protocol, BlockID.CHEST, 0);
         pk1.dataLayer = 0;
         pk1.flags = 0;
         player.dataPacket((DataPacket)pk1);

@@ -70,7 +70,6 @@ public class EnderPearl extends EntityProjectile {
         if (this.closed) {
             return false;
         } else {
-            this.timing.startTiming();
             boolean hasUpdate = super.onUpdate(currentTick);
             if (this.isCollided && this.shootingEntity instanceof Player) {
                 boolean portal = false;
@@ -93,7 +92,6 @@ public class EnderPearl extends EntityProjectile {
                 hasUpdate = true;
             }
 
-            this.timing.stopTiming();
             return hasUpdate;
         }
     }
@@ -122,9 +120,9 @@ public class EnderPearl extends EntityProjectile {
             }
         }
 
-        if (this.closeOnCollide) {
-            this.close();
-        }
+//        if (this.closeOnCollide) {
+//            this.close();
+//        }
     }
 
     private void teleport() {

@@ -87,6 +87,7 @@ public class PlayerJoinListener implements Listener
                 p.setOp(false);
             }
         }
+
     }
     
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)

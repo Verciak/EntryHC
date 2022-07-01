@@ -69,7 +69,7 @@ public class Main extends PluginBase
         Main.startUpTime = System.currentTimeMillis();
         Main.plugin = this;
         this.getServer().setAutoSave(true);
-        this.getServer().setMaxPlayers(500);
+        this.getServer().setMaxPlayers(110);
         this.getServer().setPropertyBoolean("achievements", false);
         this.getServer().setPropertyBoolean("announce-player-achievements", false);
         final InventoryMenuHandler handler = new InventoryMenuHandler();

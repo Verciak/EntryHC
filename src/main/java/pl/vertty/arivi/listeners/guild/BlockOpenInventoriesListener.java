@@ -15,14 +15,14 @@ import cn.nukkit.event.Listener;
 
 public class BlockOpenInventoriesListener implements Listener
 {
-    @EventHandler
-    public void changeWeather(final WeatherChangeEvent e) {
-        e.setCancelled(true);
-    }
-    @EventHandler
-    public void weatherChange(final WeatherChangeEvent event) {
-        event.setCancelled(true);
-    }
+//    @EventHandler
+//    public void changeWeather(final WeatherChangeEvent e) {
+//        e.setCancelled(true);
+//    }
+//    @EventHandler
+//    public void weatherChange(final WeatherChangeEvent event) {
+//        event.setCancelled(true);
+//    }
     
     @EventHandler(priority = EventPriority.HIGHEST)
     public void loadworld(final LevelLoadEvent e) {

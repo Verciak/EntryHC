@@ -65,7 +65,13 @@ public class MainConstants {
     public static Item PROTECTION_3;
     public static Item PROTECTION_4;
 
+
+    //fake
+    public static Integer fake = 1;
     public static void set() {
+
+
+
         //WCZYTYWANIE CFG
         Config config = Main.getPlugin().getConfig();
         //BORDER MAPY
@@ -73,7 +79,7 @@ public class MainConstants {
 
         //GLASS GUI
         BLACK_GLASS = new Item(160, 15, 1);
-        BLUE_GLASS = new Item(160, DyeColor.PURPLE.getWoolData(), 1);
+        BLUE_GLASS = new Item(160, DyeColor.BLUE.getWoolData(), 1);
 
 
         //CRAFTINGI

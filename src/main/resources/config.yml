@@ -63,10 +63,10 @@ limit:
   arrow: 64
   tnt: 3
 automsg:
-  - '&9ENTRYHC &8>> &7Sprawdz mozliwosci rang &9PREMIUM&7! &f/vip, /svip, /sponsor'
-  - '&9ENTRYHC &8>> &7Chcesz byc na biezaco? Odwiedz naszego discorda &9dc.entryhc.pl&7!'
-  - '&9ENTRYHC &8>> &7Masz problem, cheatera, lub jakis blad? Zglos go! &9/helpop'
-  - '&9ENTRYHC &8>> &7Nasza strona internetowa: &9entryhc.pl'
+  - '&9NomenHC &8>> &7Sprawdz mozliwosci rang &9PREMIUM&7! &f/vip, /svip, /sponsor'
+  - '&9NomenHC &8>> &7Chcesz byc na biezaco? Odwiedz naszego discorda &9dc.nomenhc.pl&7!'
+  - '&9NomenHC &8>> &7Masz problem, cheatera, lub jakis blad? Zglos go! &9/helpop'
+  - '&9NomenHC &8>> &7Nasza strona internetowa: &9nomenhc.pl'
 wl:
   motd: '&3xxxxx'
   enable: true

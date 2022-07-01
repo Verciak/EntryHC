@@ -13,10 +13,10 @@ import cn.nukkit.event.Listener;
 
 public class WeatherListener implements Listener
 {
-    @EventHandler
-    public void weatherChange(final WeatherChangeEvent event) {
-        event.setCancelled(true);
-    }
+//    @EventHandler
+//    public void weatherChange(final WeatherChangeEvent event) {
+//        event.setCancelled(true);
+//    }
     
     @EventHandler(priority = EventPriority.HIGHEST)
     public void loadworld(final LevelLoadEvent e) {
